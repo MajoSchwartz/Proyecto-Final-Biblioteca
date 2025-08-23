@@ -10,7 +10,7 @@ class UsuarioModel extends Model{
     public function verificarUsuario($usuario, $password)
     {
         return $this->where('usuario', $usuario)
-                    ->where('password', md5($password))
+                    ->where('password', SHA1($password))
                     ->first();
     }
 }
