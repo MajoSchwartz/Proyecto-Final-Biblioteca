@@ -22,9 +22,9 @@ class Login extends Controller{
                 'usuario' => $datosUsuario['usuario'],
                 'logged_in' => true
             ]);
-            return redirect()->to('/panel');
+            return redirect()->to('/panel'); #Para el mensaje de bienvenida
         } else {
-            return redirect()->back()->with('error', 'Usuario o contraseña incorrectos');
+            return redirect()->back()->with('error', 'Usuario o contraseña incorrectos'); #Se muestra mensaje en el inicio de sesión
         }
     }
 
