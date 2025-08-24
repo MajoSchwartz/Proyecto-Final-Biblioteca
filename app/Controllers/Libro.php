@@ -39,7 +39,7 @@ class Libro extends Controller{
             'estado' => $this->request->getPost('estado'),
         ];
         $this->libroModel->save($data); #Guarda el nuevo libro en la base de datos
-        return redirect()->to('/libro'); #Redirige a la lista de libros
+        return redirect()->to('libro/libro'); #Redirige a la lista de libros
     }
 
     public function editar($id)

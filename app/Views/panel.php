@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Panel</title>
+    <title>Panel</title> 
+    <!-- Agregar css o bootrsapp? --> 
 </head>
 <body>
     <h1>Bienvenido <?= session('usuario') ?></h1>
