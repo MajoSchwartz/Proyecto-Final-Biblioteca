@@ -16,8 +16,12 @@ class Libro extends Controller{
 
     public function index()
     {
-        $data = ['libros' => $this->libroModel->findAll()]; #Obtiene todos los libros de la base de datos
-        return view('libros/libro', $data); #Muestra la vista con la lista de libros
+        $datos['libros'] = $this->libroModel->orderBy('id', 'ASC')->findAll(); #Obtiene todos los libros de la base de datos
+
+        $datos['cabecera']= view('template/cabecera');
+        $datos['pie']= view('template/piepagina');
+
+        return view('libros/libro', $datos); #Muestra la vista con la lista de libros
     }
 
     public function crear()

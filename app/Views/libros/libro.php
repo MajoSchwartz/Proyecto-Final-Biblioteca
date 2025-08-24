@@ -1,31 +1,37 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Bootstrap demo</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
-  </head>
-  <body>
-    <h1>Listar libros</h1>
-    <div class="container">
+<?=$cabecera?>
         <table class="table table-light">
             <thead class="thead-light">
                 <tr>
                     <th>#</th>
-                    <th>Imagen</th>
-                    <th>Nombre</th>
+                    <th>Título</th>
+                    <th>Autor</th>
+                    <th>Género</th>
+                    <th>Páginas</th>
+                    <th>No. Ejemplar</th>
+                    <th>Cantidad</th>
+                    <th>Nivel</th>
+                    <th>Estado</th>
                     <th>Acciones</th>
                 </tr>
             </thead>
             <tbody>
+
+            <?php foreach($libros as $libro): ?>
+
                 <tr>
-                    <td>ID</td>
-                    <td>Imagen</td>
-                    <td>Nombre</td>
+                    <td><?=$libro['id'];?></td>
+                    <td><?=$libro['titulo'];?></td>
+                    <td><?=$libro['autor'];?></td>
+                    <td><?=$libro['género'];?></td>
+                    <td><?=$libro['páginas'];?></td>
+                    <td><?=$libro['Ejemplar'];?></td>
+                    <td><?=$libro['cantidad'];?></td>
+                    <td><?=$libro['nivel'];?></td>
+                    <td><?=$libro['estado'];?></td>
                     <td>Editar/Borrar</td>
                 </tr>
+            <?php endforeach; ?>
+
             </tbody>
         </table>
-  </body>
-</html>
+<?=$pie?>
