@@ -12,6 +12,8 @@ class Libro extends Controller{
         if (!session()->get('logged_in')) { #Verifica si el usuario está logueado
             return redirect()->to('/'); #Redirige al login si no está logeado
         }
+
+        helper('form');
     }
 
     public function index()
@@ -35,20 +37,26 @@ class Libro extends Controller{
 
     public function guardar()
     {
-
-        $data = [ //Obtiene la información del formulario
-            'titulo' => $this->request->getPost('titulo'), 
-            'autor' => $this->request->getPost('autor'), 
-            'género' => $this->request->getPost('género'), 
-            'páginas' => $this->request->getPost('páginas'),
-            'Ejemplar' => $this->request->getPost('Ejemplar'),
-            'cantidad' => $this ->request->getPost('cantidad'),
-            'nivel' => $this->request->getPost('nivel'),
-            'estado' => $this->request->getPost('estado'),
+        $data = [
+            'titulo' => $this->request->getPost('titulo') ?? '',
+            'autor' => $this->request->getPost('autor') ?? '',
+            'género' => $this->request->getPost('género') ?? '',
+            'páginas' => $this->request->getPost('páginas') ?? NULL,
+            'Ejemplar' => $this->request->getPost('Ejemplar') ?? 1,
+            'cantidad' => $this->request->getPost('cantidad') ?? 1,
+            'nivel' => $this->request->getPost('nivel') ?? 'Primaria Baja',
+            'estado' => $this->request->getPost('estado') ?? 'disponible',
         ];
-        $this->libroModel->save($data); #Guarda el nuevo libro en la base de datos
-        return redirect()->to('/libro');
 
+        log_message('debug', 'Datos recibidos en guardar: ' . print_r($data, true));
+
+        if ($this->libroModel->saveWithDuplicateCheck($data)) {
+            return redirect()->to('/libro')->with('success', 'Libro guardado exitosamente');
+        } else {
+            $errors = $this->libroModel->errors();
+            log_message('error', 'Errores al guardar: ' . print_r($errors, true));
+            return redirect()->to('/crear')->with('errors', $errors)->withInput();
+        }
     }
 
 

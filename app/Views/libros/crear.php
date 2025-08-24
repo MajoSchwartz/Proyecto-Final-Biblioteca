@@ -1,60 +1,57 @@
-<?=$cabecera?>
-    Formulario de crear 
-
+<?php echo $cabecera; ?>
+<h1>Formulario de Creación</h1>
 <div class="card">
     <div class="card-body">
         <h5 class="card-title">Ingresar datos del libro</h5>
-        <p class="card-text">
-
-            <form method="post" action="<?=site_url('/guardar')?>" enctype="multipart/form-data">
-
-        <div class="form-group">
-            <label for="titulo">Título:</label>
-            <input id="titulo" class="form-control" type="text" name="titulo">
-        </div>
-
-        <div class="form-group">
-            <label for="autor">Autor:</label>
-            <input id="autor" class="form-control" type="text" name="autor">
-        </div>
-
-        <div class="form-group">
-            <label for="género">Género:</label>
-            <input id="género" class="form-control" type="text" name="género">
-        </div>
-
-        <div class="form-group">
-            <label for="páginas">Páginas:</label>
-            <input id="páginas" class="form-control" type="text" name="páginas">
-        </div>
-
-        <div class="form-group">
-            <label for="Ejemplar">No. Ejemplar:</label>
-            <input id="Ejemplar" class="form-control" type="text" name="Ejemplar">
-        </div>
-
-        <div class="form-group">
-            <label for="cantidad">Cantidad:</label>
-            <input id="cantidad" class="form-control" type="text" name="cantidad">
-        </div>
-
-        <div class="form-group">
-            <label for="nivel">Nivel:</label>
-            <input id="nivel" class="form-control" type="text" name="nivel">
-        </div>
-
-        <div class="form-group">
-            <label for="estado">Estado:</label>
-            <input id="estado" class="form-control" type="text" name="estado">
-        </div>
-
-        <button class="btn btn-success" type="submit">Guardar</button>
-        
-    </form>
-            
-        </p>
+        <?php if (session()->getFlashdata('errors')): ?>
+            <div class="alert alert-danger">
+                <?php foreach (session()->getFlashdata('errors') as $error): ?>
+                    <p><?= esc($error) ?></p>
+                <?php endforeach; ?>
+            </div>
+        <?php endif; ?>
+        <form method="post" action="<?= site_url('libro/guardar') ?>">
+            <div class="form-group">
+                <label for="titulo">Título:</label>
+                <input id="titulo" class="form-control" type="text" name="titulo" value="<?= set_value('titulo') ?>" required>
+            </div>
+            <div class="form-group">
+                <label for="autor">Autor:</label>
+                <input id="autor" class="form-control" type="text" name="autor" value="<?= set_value('autor') ?>" required>
+            </div>
+            <div class="form-group">
+                <label for="género">Género:</label>
+                <input id="género" class="form-control" type="text" name="género" value="<?= set_value('género') ?>" required>
+            </div>
+            <div class="form-group">
+                <label for="páginas">Páginas:</label>
+                <input id="páginas" class="form-control" type="number" name="páginas" value="<?= set_value('páginas') ?>">
+            </div>
+            <div class="form-group">
+                <label for="Ejemplar">No. Ejemplar:</label>
+                <input id="Ejemplar" class="form-control" type="number" name="Ejemplar" value="<?= set_value('Ejemplar', 1) ?>">
+            </div>
+            <div class="form-group">
+                <label for="cantidad">Cantidad:</label>
+                <input id="cantidad" class="form-control" type="number" name="cantidad" value="<?= set_value('cantidad', 1) ?>">
+            </div>
+            <div class="form-group">
+                <label for="nivel">Nivel:</label>
+                <select id="nivel" class="form-control" name="nivel">
+                    <option value="Primaria Baja" <?= set_select('nivel', 'Primaria Baja', true) ?>>Primaria Baja</option>
+                    <option value="Primaria Alta" <?= set_select('nivel', 'Primaria Alta') ?>>Primaria Alta</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="estado">Estado:</label>
+                <select id="estado" class="form-control" name="estado">
+                    <option value="disponible" <?= set_select('estado', 'disponible', true) ?>>Disponible</option>
+                    <option value="prestado" <?= set_select('estado', 'prestado') ?>>Prestado</option>
+                    <option value="dañado" <?= set_select('estado', 'dañado') ?>>Dañado</option>
+                </select>
+            </div>
+            <button class="btn btn-success" type="submit">Guardar</button>
+        </form>
     </div>
 </div>
-
-    
-<?=$pie?>
+<?php echo $pie; ?>
