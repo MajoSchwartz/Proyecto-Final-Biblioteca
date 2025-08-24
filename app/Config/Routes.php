@@ -22,11 +22,12 @@ $routes->get('usuario/eliminar/(:num)', 'Usuario::eliminar/$1'); // Eliminar usu
 
 // Rutas para Libro (CRUD completo)
 $routes->get('libro', 'Libro::index'); // Lista de libros
-$routes->get('libro/crear', 'Libro::crear'); // Formulario para crear libro
-$routes->post('libro/guardar', 'Libro::guardar'); // Guardar nuevo libro
+$routes->get('crear', 'Libro::crear'); // Crear un nuevo libro
+$routes->post('guardar', 'Libro::guardar');
 $routes->get('libro/editar/(:num)', 'Libro::editar/$1'); // Formulario para editar
 $routes->post('libro/actualizar/(:num)', 'Libro::actualizar/$1'); // Actualizar libro
-$routes->get('libro/eliminar/(:num)', 'Libro::eliminar/$1'); // Eliminar libro
+$routes->get('borrar/(:num)', 'Libro::borrar/$1');
+
 
 // Rutas para Prestamo (Crear y eliminar)
 $routes->get('prestamo', 'Prestamo::index'); // Lista de préstamos

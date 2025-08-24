@@ -1,4 +1,7 @@
 <?=$cabecera?>
+
+<a href="<?=base_url('crear')?>">Crear un libro</a>
+
         <table class="table table-light">
             <thead class="thead-light">
                 <tr>
@@ -28,7 +31,9 @@
                     <td><?=$libro['cantidad'];?></td>
                     <td><?=$libro['nivel'];?></td>
                     <td><?=$libro['estado'];?></td>
-                    <td>Editar/Borrar</td>
+                    <td>Editar/
+                        <a href="<?=base_url('borrar/'.$libro['id']);?>" class="btn btn-danger" type="button">Borrar</a>
+                    </td>
                 </tr>
             <?php endforeach; ?>
 

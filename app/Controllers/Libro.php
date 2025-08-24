@@ -27,11 +27,15 @@ class Libro extends Controller{
     public function crear()
     {
         $data = ['libro' => $this->libroModel->create()]; #Prepara datos iniciales para un nuevo libro
+        $data['cabecera']= view('template/cabecera');
+        $data['pie']= view('template/piepagina');
+
         return view('libros/crear', $data); #Muestra el formulario para crear un nuevo libro
     }
 
     public function guardar()
     {
+
         $data = [ //Obtiene la información del formulario
             'titulo' => $this->request->getPost('titulo'), 
             'autor' => $this->request->getPost('autor'), 
@@ -43,8 +47,10 @@ class Libro extends Controller{
             'estado' => $this->request->getPost('estado'),
         ];
         $this->libroModel->save($data); #Guarda el nuevo libro en la base de datos
-        return redirect()->to('libros/libro'); #Redirige a la lista de libros
+        return redirect()->to('/libro');
+
     }
+
 
     public function editar($id)
     {
@@ -68,9 +74,12 @@ class Libro extends Controller{
         return redirect()->to('/libro'); #Redirige a la lista de libros
     }
 
-    public function eliminar($id)
+    public function borrar($id=null)
     {
-        $this->libroModel->delete($id); #Elimina el libro de la base de datos
-        return redirect()->to('/libro'); #Redirige a la lista de libros
+        $libro= new LibroModel();
+        $libro->where('id',$id)->delete($id);
+
+        return $this->response->redirect(site_url('/libro'));
+        #$this->libroModel->delete($id); #Elimina el libro de la base de datos
     }
 }
