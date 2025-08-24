@@ -13,4 +13,16 @@ class UsuarioModel extends Model{
                     ->where('password', SHA1($password)) #Cifrado de contraseña con SHA1
                     ->first();
     }
+
+    public function create()
+    {
+        return [
+            'usuario' => '',
+            'password' => '',
+            'nombre' => '',
+            'carne' => '',
+            'correo' => '',
+            'rol' => 'alumno',
+        ];
+    }
 }
