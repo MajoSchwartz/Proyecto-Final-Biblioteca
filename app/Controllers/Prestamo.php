@@ -48,7 +48,7 @@ class Prestamo extends Controller{
         ];
         $this->prestamoModel->save($data); // Guarda el préstamo
         $this->libroModel->update($libro_id, ['cantidad' => $libro['cantidad'] - 1, 'estado' => 'prestado']); // Actualiza la cantidad y estado del libro
-        return redirect()->to('/prestamo'); // Redirige a la lista de préstamos
+        return redirect()->to('libro/prestamo'); // Redirige a la lista de préstamos
     }
 
     public function eliminar($id)
@@ -57,6 +57,6 @@ class Prestamo extends Controller{
         $this->prestamoModel->delete($id); // Elimina el préstamo (cancela)
         $libro = $this->libroModel->find($prestamo['libro_id']); // Busca el libro asociado
         $this->libroModel->update($prestamo['libro_id'], ['cantidad' => $libro['cantidad'] + 1, 'estado' => 'disponible']); // Restaura la disponibilidad
-        return redirect()->to('/prestamo'); // Redirige a la lista de préstamos
+        return redirect()->to('libro/prestamo'); // Redirige a la lista de préstamos
     }
 }

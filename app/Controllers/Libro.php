@@ -17,13 +17,13 @@ class Libro extends Controller{
     public function index()
     {
         $data = ['libros' => $this->libroModel->findAll()]; #Obtiene todos los libros de la base de datos
-        return view('libro/index', $data); #Muestra la vista con la lista de libros
+        return view('libros/libro', $data); #Muestra la vista con la lista de libros
     }
 
     public function crear()
     {
         $data = ['libro' => $this->libroModel->create()]; #Prepara datos iniciales para un nuevo libro
-        return view('libro/crear', $data); #Muestra el formulario para crear un nuevo libro
+        return view('libros/crear', $data); #Muestra el formulario para crear un nuevo libro
     }
 
     public function guardar()
@@ -39,13 +39,13 @@ class Libro extends Controller{
             'estado' => $this->request->getPost('estado'),
         ];
         $this->libroModel->save($data); #Guarda el nuevo libro en la base de datos
-        return redirect()->to('libro/libro'); #Redirige a la lista de libros
+        return redirect()->to('libros/libro'); #Redirige a la lista de libros
     }
 
     public function editar($id)
     {
         $data = ['libro' => $this->libroModel->find($id)]; #Buscar el libro por ID
-        return view('libro/editar', $data); #Muestra el formulario para editar el libro
+        return view('libros/editar', $data); #Muestra el formulario para editar el libro
     }
 
     public function actualizar($id)
