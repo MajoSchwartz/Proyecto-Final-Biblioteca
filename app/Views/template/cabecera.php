@@ -9,6 +9,6 @@
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="<?= base_url('/') ?>">Biblioteca</a>
+        <a class="navbar-brand" href="<?= base_url('/panel') ?>">Biblioteca</a>
     </nav>
     <div class="container"> <!-- Inicia el contenedor -->

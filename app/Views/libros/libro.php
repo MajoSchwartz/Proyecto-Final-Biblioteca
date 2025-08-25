@@ -1,8 +1,10 @@
 <?=$cabecera?>
+<br/>
+<a class="btn btn-success"  href="<?=base_url('crear')?>">Crear un libro</a>
+<br/>
+<br/>
 
-<a href="<?=base_url('crear')?>">Crear un libro</a>
-
-        <table class="table table-light">
+        <table class="table">
             <thead class="thead-light">
                 <tr>
                     <th>#</th>
@@ -31,7 +33,10 @@
                     <td><?=$libro['cantidad'];?></td>
                     <td><?=$libro['nivel'];?></td>
                     <td><?=$libro['estado'];?></td>
-                    <td>Editar/
+                    <td>
+                        <a href="<?=base_url('editar/'.$libro['id']);?>" class="btn btn-info" type="button">Editar</a>
+                        <br/>
+                        <br/>
                         <a href="<?=base_url('borrar/'.$libro['id']);?>" class="btn btn-danger" type="button">Borrar</a>
                     </td>
                 </tr>
