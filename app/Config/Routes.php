@@ -24,8 +24,7 @@ $routes->get('usuario/eliminar/(:num)', 'Usuario::eliminar/$1'); // Eliminar usu
 $routes->get('libro', 'Libro::index'); // Lista de libros
 $routes->get('crear', 'Libro::crear'); // Crear un nuevo libro
 $routes->post('libro/guardar', 'Libro::guardar');
-$routes->get('libro/editar/(:num)', 'Libro::editar/$1'); // Formulario para editar
-$routes->post('libro/actualizar/(:num)', 'Libro::actualizar/$1'); // Actualizar libro
+$routes->get('editar/(:num)', 'Libro::editar/$1');$routes->post('libro/actualizar/(:num)', 'Libro::actualizar/$1'); // Actualizar libro
 $routes->get('borrar/(:num)', 'Libro::borrar/$1');
 
 

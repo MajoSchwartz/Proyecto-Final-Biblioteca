@@ -60,10 +60,18 @@ class Libro extends Controller{
     }
 
 
-    public function editar($id)
+    public function editar($id=null)
     {
-        $data = ['libro' => $this->libroModel->find($id)]; #Buscar el libro por ID
-        return view('libros/editar', $data); #Muestra el formulario para editar el libro
+        print_r($id);
+        $libro= new LibroModel();
+        $data['libro']=$libro->where('id',$id)->first();
+
+        $data['cabecera']= view('template/cabecera');
+        $data['pie']= view('template/piepagina');
+
+        return view('libros/editar', $data);
+        /*$data = ['libro' => $this->libroModel->find($id)]; #Buscar el libro por ID
+        return view('libros/editar', $data); #Muestra el formulario para editar el libro*/
     }
 
     public function actualizar($id)
