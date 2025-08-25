@@ -1,7 +1,4 @@
 <?=$cabecera?>
-<?php
-print_r($libro);
-?>
 
 <div class="card">
     <div class="card-body">
@@ -13,7 +10,10 @@ print_r($libro);
                 <?php endforeach; ?>
             </div>
         <?php endif; ?>
-        <form method="post" action="<?= site_url('libro/guardar') ?>">
+        <form method="post" action="<?= site_url('/actualizar') ?>">
+
+        <input type="hidden" name="id" value="<?=$libro['id']?>">
+
             <div class="form-group">
                 <label for="titulo">Título:</label>
                 <input id="titulo" value="<?=$libro['titulo']?>" class="form-control" type="text" name="titulo" required>

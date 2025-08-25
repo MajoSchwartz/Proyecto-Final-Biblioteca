@@ -62,7 +62,6 @@ class Libro extends Controller{
 
     public function editar($id=null)
     {
-        print_r($id);
         $libro= new LibroModel();
         $data['libro']=$libro->where('id',$id)->first();
 
@@ -74,8 +73,9 @@ class Libro extends Controller{
         return view('libros/editar', $data); #Muestra el formulario para editar el libro*/
     }
 
-    public function actualizar($id)
+    public function actualizar()
     {
+        $libro= new LibroModel();
         $data = [
             'titulo' => $this->request->getPost('titulo'), 
             'autor' => $this->request->getPost('autor'), 
@@ -86,8 +86,14 @@ class Libro extends Controller{
             'nivel' => $this->request->getPost('nivel'),
             'estado' => $this->request->getPost('estado'),
         ];
+        $id= $this->request->getVar('id');
+        $libro->update($id,$data);
+
+        return redirect()->to('/libro'); 
+
+        /*
         $this->libroModel->update($id, $data); #Actualiza el libro en la base de datos
-        return redirect()->to('/libro'); #Redirige a la lista de libros
+        return redirect()->to('/libro'); #Redirige a la lista de libros*/
     }
 
     public function borrar($id=null)
