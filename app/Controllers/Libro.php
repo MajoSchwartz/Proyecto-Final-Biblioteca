@@ -89,7 +89,7 @@ class Libro extends Controller{
         $id= $this->request->getVar('id');
         $libro->update($id,$data);
 
-        return redirect()->to('/libro'); 
+        return $this->response->redirect(site_url('/libro'));
 
         /*
         $this->libroModel->update($id, $data); #Actualiza el libro en la base de datos

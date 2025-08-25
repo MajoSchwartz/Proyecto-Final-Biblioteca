@@ -53,7 +53,8 @@
                     <option value="dañado" <?= set_select('estado', 'dañado', $libro['estado'] === 'dañado') ?>>Dañado</option>
                 </select>
             </div>
-            <button class="btn btn-success" type="submit">Guardar</button>
+            <button class="btn btn-success" type="submit">Actualizar</button>
+            <a href="<?=base_url('libro');?>" class="btn btn-info" >Cancelar</a>
         </form>
     </div>
 </div>

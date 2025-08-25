@@ -1,14 +1,14 @@
 <?=$cabecera?>
 <br/>
-<a class="btn btn-success"  href="<?=base_url('crear')?>">Crear un libro</a>
+<a class="btn btn-success" style="margin-left:70px;" href="<?=base_url('crear')?>">Crear un libro</a>
 <br/>
 <br/>
 
-        <table class="table">
+        <table class="table table-light table-hover" style="width: 90%; min-width: 800px; margin-left: auto; margin-right: auto;">
             <thead class="thead-light">
                 <tr>
                     <th>#</th>
-                    <th>Título</th>
+                    <th style="word-wrap: break-word; white-space: normal; max-width: 200px;">Título</th>
                     <th>Autor</th>
                     <th>Género</th>
                     <th>Páginas</th>
@@ -25,9 +25,9 @@
 
                 <tr>
                     <td><?=$libro['id'];?></td>
-                    <td><?=$libro['titulo'];?></td>
-                    <td><?=$libro['autor'];?></td>
-                    <td><?=$libro['género'];?></td>
+                    <td style="word-wrap: break-word; white-space: normal; max-width: 200px;"><?=$libro['titulo']?></td>
+                    <td><?=substr($libro['autor'], 0, 15);?></td>
+                    <td><?=substr($libro['género'], 0, 10);?></td>
                     <td><?=$libro['páginas'];?></td>
                     <td><?=$libro['Ejemplar'];?></td>
                     <td><?=$libro['cantidad'];?></td>
@@ -35,8 +35,6 @@
                     <td><?=$libro['estado'];?></td>
                     <td>
                         <a href="<?=base_url('editar/'.$libro['id']);?>" class="btn btn-info" type="button">Editar</a>
-                        <br/>
-                        <br/>
                         <a href="<?=base_url('borrar/'.$libro['id']);?>" class="btn btn-danger" type="button">Borrar</a>
                     </td>
                 </tr>
