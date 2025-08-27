@@ -10,7 +10,7 @@
                 <?php endforeach; ?>
             </div>
         <?php endif; ?>
-        <form method="post" action="<?= site_url('/actualizar') ?>">
+        <form method="post" action="<?= site_url('/actualizarl') ?>">
 
         <input type="hidden" name="id" value="<?=$libro['id']?>">
 

@@ -10,7 +10,7 @@
                 <?php endforeach; ?>
             </div>
         <?php endif; ?>
-        <form method="post" action="<?= site_url('libro/guardar') ?>">
+        <form method="post" action="<?= site_url('libro/guardarl') ?>">
             <div class="form-group">
                 <label for="titulo">Título:</label>
                 <input id="titulo" class="form-control" type="text" name="titulo" value="<?= set_value('titulo') ?>" required>

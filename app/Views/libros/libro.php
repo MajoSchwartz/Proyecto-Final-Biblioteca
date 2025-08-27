@@ -34,8 +34,8 @@
                     <td><?=$libro['nivel'];?></td>
                     <td><?=$libro['estado'];?></td>
                     <td>
-                        <a href="<?=base_url('editar/'.$libro['id']);?>" class="btn btn-info" type="button">Editar</a>
-                        <a href="<?=base_url('borrar/'.$libro['id']);?>" class="btn btn-danger" type="button">Borrar</a>
+                        <a href="<?=base_url('editarl/'.$libro['id']);?>" class="btn btn-info" type="button">Editar</a>
+                        <a href="<?=base_url('borrarl/'.$libro['id']);?>" class="btn btn-danger" type="button">Borrar</a>
                     </td>
                 </tr>
             <?php endforeach; ?>

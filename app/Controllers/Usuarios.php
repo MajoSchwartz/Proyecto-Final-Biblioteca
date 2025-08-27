@@ -4,6 +4,17 @@ namespace App\Controllers;
 use CodeIgniter\Controller;
 use App\Models\GUsuarioModel;
 class Usuarios extends Controller{
+
+    public function __construct()
+    {
+        $this->gusuariomodel = new GUsuarioModel(); #Inicializa el modelo al crear el controlador
+        if (!session()->get('logged_in')) { #Verifica si el usuario está logueado
+            return redirect()->to('/'); #Redirige al login si no está logeado
+        }
+
+        helper('form');
+    }
+
     public function index(){
         $usuario = new GUsuarioModel;
         $datos['usuarios']= $usuario->orderBy('id','asc')->findAll();
