@@ -1,6 +1,6 @@
 <?=$cabecera?>
 <br/>
-<a class="btn btn-success" style="margin-left:70px;" href="<?=base_url('crear')?>">Crear un libro</a>
+<a class="btn btn-success" style="margin-left:70px;" href="<?=base_url('crearl')?>">Crear un libro</a>
 <br/>
 <br/>
 
