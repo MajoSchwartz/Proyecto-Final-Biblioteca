@@ -13,7 +13,7 @@ $routes->get('panel', 'Login::panel');
 $routes->get('login/salir', 'Login::salir');
 
 // Rutas para Usuario (CRUD completo)
-$routes->get('usuario', 'Usuario::index'); // Lista de usuarios
+$routes->get('usuario', 'Usuario::index'); // El usuario accede a la ruta, que accede el controlador y su función
 $routes->get('usuario/crear', 'Usuario::crear'); // Formulario para crear usuario
 $routes->post('usuario/guardar', 'Usuario::guardar'); // Guardar nuevo usuario
 $routes->get('usuario/editar/(:num)', 'Usuario::editar/$1'); // Formulario para editar (el :num captura el ID)
@@ -38,4 +38,4 @@ $routes->get('prestamo/eliminar/(:num)', 'Prestamo::eliminar/$1'); // Cancelar p
 // Rutas para Devolucion (Crear)
 $routes->get('devolucion', 'Devolucion::index'); // Lista de devoluciones
 $routes->get('devolucion/crear', 'Devolucion::crear'); // Formulario para registrar devolución
-$routes->post('devolucion/guardar/(:num)', 'Devolucion::guardar/$1'); // Guardar devolución
+$routes->post('devolucion/guardar/(:num)', 'Devolucion::guardar/$1'); // Guardar devolución$routes->get('usuario', 'Usuario::index');
