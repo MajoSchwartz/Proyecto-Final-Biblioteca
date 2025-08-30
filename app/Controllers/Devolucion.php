@@ -39,7 +39,7 @@ class Devolucion extends Controller{
     {
         $libro = new libromodel();
         $datos['libro'] = $libro->find($libro_id); // Busca el préstamo por ID
-        $usuarios = new usuario();
+        $usuarios = new UsuarioModel();
         $datos['usuarios'] = $usuarios->orderBy('carnet','asc')->findAll();
         $datos['cabecera']= view('template/cabecera');
         $datos['pie']= view('template/piepagina');
@@ -73,6 +73,6 @@ class Devolucion extends Controller{
             'estado' => 'disponible'
         ];
         $libro->update($lib['id'],$datalib);
-        return $this->response->redirect(site_url('/devoluciones'));
+        return $this->response->redirect(site_url('/devolucion'));
     }
 }
