@@ -1,5 +1,4 @@
 <?php echo $cabecera; ?>
-<h1>Formulario de Creación</h1>
 <div class="card shadow mt-4">
     <div class="card-body">
         <h5 class="card-title">Ingresar datos del libro</h5>

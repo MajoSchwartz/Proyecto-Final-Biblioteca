@@ -4,7 +4,7 @@
 </div>
 <main>
 <div class="d-flex justify-content-between mb-3" style="width: 90%; margin: auto;">
-    <a class="btn btn-success" href="<?=base_url('usuarios/crear')?>">Crear un libro</a>
+    <a class="btn btn-success" href="<?=base_url('usuarios/crear')?>">Crear un usuario</a>
     <a class="btn btn-danger" href="<?=base_url('panel')?>">Regresar</a>
 </div>
 
@@ -33,8 +33,8 @@
                 <td><?=$usuario['rol'];?></td>
                 <td><i class="fas fa-lock"></i> Protegida</td> <!--La contraseña se mantiene oculta -->
                 <td>
-                    <a href="<?=base_url('usuarios/editar/'.$usuario['id']);?>" class="btn btn-info" type="button">Editar</a>
-                    <a href="<?=base_url('usuarios/borrar/'.$usuario['id']);?>" class="btn btn-danger" type="button">Borrar</a>
+                    <a href="<?=base_url('usuarios/editar/'.$usuario['id']);?>" class="btn btn-info" type="button"><i class="fas fa-pencil-alt"></i></a>
+                    <a href="<?=base_url('usuarios/borrar/'.$usuario['id']);?>" class="btn btn-danger" type="button"><i class="fas fa-trash-alt"></i></a>
                 </td>
             </tr>
 

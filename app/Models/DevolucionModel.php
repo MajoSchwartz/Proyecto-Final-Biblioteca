@@ -17,4 +17,15 @@ class DevolucionModel extends Model{
             'dias_atraso' => 0, // Valor inicial para los días de atraso
         ];
     }
+
+    protected $validationRules = [
+        'libro_id' => 'required|integer',
+        'usuario_id' => 'required|integer',
+        'fecha_devolucion' => 'required|valid_date',
+        'dias_atraso' => 'permit_empty|integer'
+    ];
+
+    protected $validationMessages = [
+        'fecha_devolucion' => ['required' => 'La fecha de devolución es obligatoria.']
+    ];
 }

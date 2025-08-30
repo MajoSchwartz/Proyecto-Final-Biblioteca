@@ -11,7 +11,7 @@
                 <tr>
                     <th>#</th>
                     <th style="word-wrap: break-word; white-space: normal; max-width: 200px;">Título</th>
-                    <th>Autor</th>
+                    <th style="word-wrap: break-word; white-space: normal; max-width: 200px;">Autor</th>
                     <th>Género</th>
                     <th>Páginas</th>
                     <th>No. Ejemplar</th>
@@ -36,8 +36,8 @@
                     <td><?=$libro['nivel'];?></td>
                     <td><?=$libro['estado'];?></td>
                     <td>
-                        <a href="<?=base_url('editarl/'.$libro['id']);?>" class="btn btn-info" type="button">Editar</a>
-                        <a href="<?=base_url('borrarl/'.$libro['id']);?>" class="btn btn-danger" type="button">Borrar</a>
+                        <a href="<?=base_url('editarl/'.$libro['id']);?>" class="btn btn-info" type="button"><i class="fas fa-pencil-alt"></i></a>
+                        <a href="<?=base_url('borrarl/'.$libro['id']);?>" class="btn btn-danger" type="button"><i class="fas fa-trash-alt"></i></a>
                     </td>
                 </tr>
             <?php endforeach; ?>

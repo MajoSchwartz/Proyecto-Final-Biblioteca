@@ -28,7 +28,6 @@ class LibroModel extends Model
             'required' => 'El título es obligatorio.',
             'max_length' => 'El título no puede exceder 255 caracteres.',
         ],
-        // Agrega mensajes para otros campos si lo deseas
     ];
 
     // Método para preparar datos iniciales

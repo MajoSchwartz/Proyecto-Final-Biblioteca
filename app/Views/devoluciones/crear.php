@@ -57,10 +57,8 @@
             </div>
 
             <!-- Botones de acción -->
-            <div class="d-flex justify-content-center mt-4">
-                <button class="btn btn-success me-2" type="submit">Grabar</button>
-                <a href="<?=base_url('devolucion')?>" class="btn btn-info">Regresar</a>
-            </div>
+            <button class="btn btn-success" type="submit">Guardar</button>
+            <a href="<?=base_url('libro');?>" class="btn btn-info" >Cancelar</a>
 
         </form>
         </p>

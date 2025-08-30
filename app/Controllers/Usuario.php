@@ -27,10 +27,20 @@ class Usuario extends Controller{
     }
 
     public function guardar(){
-
         $usuario = new UsuarioModel(); //crear una instancia al modelo para capturar la información y  meterla a la BD
-        //para obtener todos los valores de los campos
+        
+        //Validación que los campos estén completos
+        $validacion = $this->validate([
+            'usuario' => 'required|max_length[100]',
+            'nombre' => 'required|max_length[100]',
+            'carnet' => 'required|max_length[100]',
+            'correo' => 'required|valid_email',
+            'rol' => 'required|in_list[alumno,bibliotecario,admin]',
+            'PASSWORD' => 'required|min_length[6]',
 
+        ]);
+        
+        //para obtener todos los valores de los campos
         $datos=[
             'usuario' => $this->request->getVar('usuario'),
             'nombre' => $this->request->getVar('nombre'),
@@ -40,8 +50,15 @@ class Usuario extends Controller{
             'password' => SHA1($this->request->getVar('PASSWORD'))
         ];
 
-        $usuario->insert($datos);
-        return $this->response->redirect(site_url('/usuario'));
+        log_message('debug', 'Datos recibidos en guardar: ' . print_r($datos, true));
+
+        if ($usuario->saveWithDuplicateCheck($datos)) {
+            return redirect()->to('/usuario')->with('success', 'Libro guardado exitosamente');
+        } else {
+            $errors = $usuario->errors();
+            log_message('error', 'Errores al guardar: ' . print_r($errors, true));
+            return redirect()->to('/usuarios/crear')->with('errors', $errors)->withInput();
+        }
     }
 
     public function borrar($id=null){ //En caso de no recepcionar nada

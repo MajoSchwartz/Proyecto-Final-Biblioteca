@@ -6,7 +6,7 @@
 </div>
 
 <!-- Botón para salir al panel principal -->
-<div class="d-flex justify-content-end mb-3">
+<div class="d-flex justify-content-end mb-3" style="width: 90%; margin: auto;">
     <a class="btn btn-danger" href="<?=base_url('panel')?>">Regresar</a>
 </div>
 
