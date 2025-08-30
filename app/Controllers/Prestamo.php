@@ -1,62 +1,73 @@
 <?php 
 namespace App\Controllers;
 
+//Modelos a utilizar
 use CodeIgniter\Controller;
 use App\Models\PrestamoModel;
-class Prestamo extends Controller{
-    protected $prestamoModel; // Variable para el modelo de préstamos
-    protected $libroModel; // Variable para el modelo de libros
+use App\Models\UsuarioModel;
+use App\Models\LibroModel;
 
-    public function __construct()
-    {
-        $this->prestamoModel = new PrestamoModel(); // Inicializa el modelo de préstamos
-        $this->libroModel = new LibroModel(); // Inicializa el modelo de libros
-        if (!session()->get('logged_in')) { // Verifica si el usuario está logueado
-            return redirect()->to('/'); // Redirige al login si no está logueado
-        }
-    }
+class Prestamo extends Controller{
+    protected $PrestamoModel; // Variable para el modelo de préstamos
+    protected $LibroModel; // Variable para el modelo de libros
+   
 
     public function index()
     {
-        $data = ['prestamos' => $this->prestamoModel->findAll()]; // Obtiene todos los préstamos
-        return view('prestamo/index', $data); // Muestra la lista de préstamos
+        //$db = \config\Database::connect();
+        //$query = $db->table("libros")->get();
+        $libro = new LibroModel();
+        $datos['libros'] = $libro->where('estado',1)->orderBy('titulo','asc')->findAll(); #Obtiene todos los libros de la base de datos
+        //$datos['libros']= $query->getResultArray();
+        $datos['cabecera']= view('template/cabecera');
+        $datos['pie']= view('template/piepagina');
+        //$data = ['prestamos' => $this->prestamoModel->findAll()]; // Obtiene todos los préstamos
+        return view('prestamos/prestamo', $datos); // Muestra la lista de préstamos
     }
 
-    public function crear()
+    public function crear($libro_id)
     {
-        $data = ['prestamo' => $this->prestamoModel->create()]; // Prepara datos iniciales para un préstamo
-        return view('prestamo/crear', $data); // Muestra el formulario para registrar un préstamo
+        $libro = new LibroModel();
+        $usuarios = new UsuarioModel();
+        $datos['usuarios'] = $usuarios->orderBy('carnet','asc')->findAll();
+        $datos['libro'] = $libro->find($libro_id); // Busca el préstamo por ID
+        $datos['cabecera']= view('template/cabecera');
+        $datos['pie']= view('template/piepagina');
+        return view('prestamos/crear',$datos);
     }
 
-    public function guardar()
-    {
-        $libro_id = $this->request->getPost('libro_id'); // Obtiene el ID del libro del formulario
-        $ejemplar = $this->request->getPost('ejemplar'); // Obtiene el número de ejemplar
-        $libro = $this->libroModel->find($libro_id); // Busca el libro en la base de datos
-
-        if ($libro['cantidad'] < $ejemplar) { // Verifica si hay suficientes ejemplares
-            return redirect()->back()->with('error', 'No hay suficientes ejemplares.'); // Muestra error si no hay suficientes
-        }
-
-        $data = [
-            'usuario_id' => $this->request->getPost('usuario_id'), // Obtiene el ID del usuario
-            'libro_id' => $libro_id, // Asigna el ID del libro
-            'ejemplar' => $ejemplar, // Asigna el número de ejemplar
-            'fecha_prestamo' => date('Y-m-d H:i:s'), // Establece la fecha actual como fecha de préstamo
-            'fecha_devolucion' => date('Y-m-d H:i:s'), 
-            'estado' => 'activo', // Establece el estado como activo
+     public function guardar(){
+        //$usuario = new usuario();
+        //$carnet = $this->request->getVar('carnet');
+        //$usu = $usuario->where('carnet',$carnet)->first();
+        $libro_id =  $this->request->getVar('libro_id');
+        $libro = new LibroModel();
+        $lib = $libro->where('id',$libro_id)->first();
+        $data=[
+            //"usuario_id" => $usu['id'],
+            "libro_id" => $lib['id'],
+            "usuario_id" => $this->request->getVar('usuario_id'),
+            "ejemplar" => $lib['Ejemplar'],
+            "fecha_prestamo" => $this->request->getVar('fecha_prestamo'),
+            "fecha_devolucion" => $this->request->getVar('fecha_devolucion')
         ];
-        $this->prestamoModel->save($data); // Guarda el préstamo
-        $this->libroModel->update($libro_id, ['cantidad' => $libro['cantidad'] - 1, 'estado' => 'prestado']); // Actualiza la cantidad y estado del libro
-        return redirect()->to('libro/prestamo'); // Redirige a la lista de préstamos
+        //print_r($data);
+        $pres = new PrestamoModel();        
+        $pres->insert($data);
+        //actualizar libro
+        $datalib = [
+            'titulo' => $lib['titulo'], 
+            'autor' => $lib['autor'], 
+            'género' => $lib['género'], 
+            'páginas' => $lib['páginas'],
+            'Ejemplar' => $lib['Ejemplar'],
+            'cantidad' => $lib['cantidad'],
+            'nivel' => $lib['nivel'],
+            'estado' => 'prestado'
+        ];
+        $libro->update($lib['id'],$datalib);
+        return $this->response->redirect(site_url('/prestamo'));
     }
 
-    public function eliminar($id)
-    {
-        $prestamo = $this->prestamoModel->find($id); // Busca el préstamo por ID
-        $this->prestamoModel->delete($id); // Elimina el préstamo (cancela)
-        $libro = $this->libroModel->find($prestamo['libro_id']); // Busca el libro asociado
-        $this->libroModel->update($prestamo['libro_id'], ['cantidad' => $libro['cantidad'] + 1, 'estado' => 'disponible']); // Restaura la disponibilidad
-        return redirect()->to('libro/prestamo'); // Redirige a la lista de préstamos
-    }
+
 }

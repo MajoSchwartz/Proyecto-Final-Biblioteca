@@ -1,6 +1,9 @@
 <?=$cabecera?>
 <br/>
 <a class="btn btn-success" style="margin-left:70px;" href="<?=base_url('usuarios/crear')?>">Crear un usuario</a>
+<div class="d-flex justify-content-end mb-3">
+                <a class="btn btn-danger" href="<?=base_url('panel')?>">Regresar</a>
+</div>
 <br/>
 <br/>
 

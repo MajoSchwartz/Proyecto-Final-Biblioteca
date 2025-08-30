@@ -1,9 +1,11 @@
 <?=$cabecera?>
+<div class="d-flex justify-content-center">
+    <h2>LISTADO DE LIBROS</h2>
+</div>
 <br/>
 <a class="btn btn-success" style="margin-left:70px;" href="<?=base_url('crearl')?>">Crear un libro</a>
 <br/>
 <br/>
-
         <table class="table table-light table-hover" style="width: 90%; min-width: 800px; margin-left: auto; margin-right: auto;">
             <thead class="thead-light">
                 <tr>

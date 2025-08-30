@@ -31,9 +31,9 @@ $routes->get('borrarl/(:num)', 'Libro::borrar/$1');
 
 
 // Rutas para Prestamo (Crear y eliminar)
-$routes->get('prestamos', 'Prestamo::index'); // Lista de préstamos
-$routes->get('crearp/(:num)', 'Prestamo::crear/$1'); // Formulario para registrar préstamo
-$routes->post('guardarp', 'Prestamo::guardar'); // Guardar préstamo
+$routes->get('prestamo', 'Prestamo::index'); // Lista de préstamos
+$routes->get('prestamos/crear/(:num)', 'Prestamo::crear/$1'); // Formulario para registrar préstamo
+$routes->post('prestamos/guardar', 'Prestamo::guardar'); // Guardar préstamo
 
 // Rutas para Devolucion (Crear)
 $routes->get('devolucion', 'Devolucion::index'); // Lista de devoluciones

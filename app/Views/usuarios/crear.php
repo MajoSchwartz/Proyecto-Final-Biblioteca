@@ -1,6 +1,6 @@
 <?=$cabecera?>
 
-<div class="card"> <!-- Aqui se pone todo el contenido del formulario -->
+<div class="card shadow mt-4"> <!-- Aqui se pone todo el contenido del formulario -->
     <div class="card-body">
         <h5 class="card-title">Ingresar datos del usuario</h5>
         <p class="card-text">
