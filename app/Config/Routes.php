@@ -17,9 +17,9 @@ $routes->get('login/salir', 'Login::salir');
 $routes->get('usuario', 'Usuario::index'); // El usuario accede a la ruta, que accede el controlador y su función
 $routes->get('usuarios/crear', 'Usuario::crear'); // Formulario para crear usuario
 $routes->post('usuarios/guardar', 'Usuario::guardar'); // Guardar nuevo usuario con el método utilizado
-$routes->get('usuario/editar/(:num)', 'Usuario::editar/$1'); // Formulario para editar (el :num captura el ID)
-$routes->post('usuario/actualizar/(:num)', 'Usuario::actualizar/$1'); // Actualizar usuario
 $routes->get('usuarios/borrar/(:num)', 'Usuario::borrar/$1'); //Se agrega num por el numero que se quiere capturar
+$routes->get('usuarios/editar/(:num)', 'Usuario::editar/$1');
+$routes->post('usuarios/actualizar', 'Usuario::actualizar');
 
 // Rutas para Libro (CRUD completo)
 $routes->get('libro', 'Libro::index'); // Lista de libros

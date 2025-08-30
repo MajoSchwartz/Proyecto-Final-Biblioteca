@@ -1,6 +1,8 @@
 <?=$cabecera?>
-
-<a href="<?=base_url('usuarios/crear')?>">Crear un usuario</a>
+<br/>
+<a class="btn btn-success" style="margin-left:70px;" href="<?=base_url('usuarios/crear')?>">Crear un usuario</a>
+<br/>
+<br/>
 
     <table class="table table-light table-hover" style="width: 90%; min-width: 800px; margin-left: auto; margin-right: auto;">
         <thead class="thead-light">
@@ -26,7 +28,8 @@
                 <td><?=$usuario['correo'];?></td>
                 <td><?=$usuario['rol'];?></td>
                 <td><i class="fas fa-lock"></i> Protegida</td> <!-- La contraseña se mantiene oculta -->
-                <td>Editar/
+                <td>
+                    <a href="<?=base_url('usuarios/editar/'.$usuario['id']);?>" class="btn btn-info" type="button">Editar</a>
                     <a href="<?=base_url('usuarios/borrar/'.$usuario['id']);?>" class="btn btn-danger" type="button">Borrar</a>
                 </td>
             </tr>
