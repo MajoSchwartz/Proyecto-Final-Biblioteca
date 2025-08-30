@@ -46,5 +46,13 @@ class Usuario extends Controller{
 
     public function borrar($id=null){ //En caso de no recepcionar nada
         echo "Borrar registro".$id;
+        $usuario= new UsuarioModel();
+        $usuario->where('id',$id)->delete($id); //Borrar el id que coinicda con el que se solicita
+
+        return $this->response->redirect(site_url('/usuario')); //Se regresa a la vista usuarios
+        
+
+
+        
     }
 }

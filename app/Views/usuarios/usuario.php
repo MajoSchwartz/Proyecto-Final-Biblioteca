@@ -27,7 +27,7 @@
                 <td><?=$usuario['rol'];?></td>
                 <td><i class="fas fa-lock"></i> Protegida</td> <!-- La contraseña se mantiene oculta -->
                 <td>Editar/
-                    <a href="<?base_url('usuarios/borrar/'.$usuario['id']);?>" class="btn btn-danger" type="button">Borrar</a>
+                    <a href="<?=base_url('usuarios/borrar/'.$usuario['id']);?>" class="btn btn-danger" type="button">Borrar</a>
                 </td>
             </tr>
 

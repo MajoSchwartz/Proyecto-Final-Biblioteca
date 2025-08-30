@@ -19,7 +19,7 @@ $routes->get('usuarios/crear', 'Usuario::crear'); // Formulario para crear usuar
 $routes->post('usuarios/guardar', 'Usuario::guardar'); // Guardar nuevo usuario con el método utilizado
 $routes->get('usuario/editar/(:num)', 'Usuario::editar/$1'); // Formulario para editar (el :num captura el ID)
 $routes->post('usuario/actualizar/(:num)', 'Usuario::actualizar/$1'); // Actualizar usuario
-$routes->get('usuarios/borrar/(:num)', 'Usuario::borrar$1'); //Se agrega num por el numero que se quiere capturar
+$routes->get('usuarios/borrar/(:num)', 'Usuario::borrar/$1'); //Se agrega num por el numero que se quiere capturar
 
 // Rutas para Libro (CRUD completo)
 $routes->get('libro', 'Libro::index'); // Lista de libros
