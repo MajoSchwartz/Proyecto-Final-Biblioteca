@@ -3,6 +3,10 @@ namespace App\Controllers;
 
 use CodeIgniter\Controller;
 use App\Models\DevolucionModel;
+use App\Models\LibroModel;
+use App\Models\UsuarioModel;
+use App\Models\PrestamoModel;
+
 class Devolucion extends Controller{
     protected $devolucionModel; // Variable para el modelo de devoluciones
     protected $prestamoModel; // Variable para el modelo de préstamos
@@ -14,37 +18,61 @@ class Devolucion extends Controller{
         $this->prestamoModel = new PrestamoModel(); // Inicializa el modelo de préstamos
         $this->libroModel = new LibroModel(); // Inicializa el modelo de libros
         if (!session()->get('logged_in')) { // Verifica si el usuario está logueado
-            return redirect()->to('/'); // Redirige al login si no está logueado
+            return redirect()->to('login'); // Redirige al login si no está logueado
         }
     }
 
-    public function index()
+ public function index()
     {
-        $data = ['devoluciones' => $this->devolucionModel->findAll()]; // Obtiene todas las devoluciones
-        return view('devolucion/index', $data); // Muestra la lista de devoluciones
+        //$db = \config\Database::connect();
+        //$query = $db->table("libros")->get();
+        $libro = new libromodel();
+        $datos['libros'] = $libro->where('estado',2)->orderBy('titulo','asc')->findAll(); #Obtiene todos los libros de la base de datos
+        //$datos['libros']= $query->getResultArray();
+        $datos['cabecera']= view('template/cabecera');
+        $datos['pie']= view('template/piepagina');
+        //$data = ['prestamos' => $this->prestamoModel->findAll()]; // Obtiene todos los préstamos
+        return view('devoluciones/devolucion', $datos); // Muestra la lista de préstamos
     }
 
-    public function crear()
+    public function crear($libro_id)
     {
-        $data = ['devolucion' => $this->devolucionModel->create()]; // Prepara datos iniciales para una devolución
-        return view('devolucion/crear', $data); // Muestra el formulario para registrar una devolución
+        $libro = new libromodel();
+        $datos['libro'] = $libro->find($libro_id); // Busca el préstamo por ID
+        $usuarios = new usuario();
+        $datos['usuarios'] = $usuarios->orderBy('carnet','asc')->findAll();
+        $datos['cabecera']= view('template/cabecera');
+        $datos['pie']= view('template/piepagina');
+        return view('devoluciones/crear',$datos);
     }
 
-    public function guardar($prestamo_id)
-    {
-        $prestamo = $this->prestamoModel->find($prestamo_id); // Busca el préstamo por ID
-        $fecha_devolucion = date('Y-m-d H:i:s'); // Establece la fecha actual como fecha de devolución
-        $dias_atraso = (strtotime($fecha_devolucion) - strtotime($prestamo['fecha_prestamo'])) / (60 * 60 * 24); // Calcula los días de atraso
-
-        $this->devolucionModel->save([ // Guarda la devolución
-            'prestamo_id' => $prestamo_id, // Asocia con el préstamo
-            'fecha_devolucion' => $fecha_devolucion, // Registra la fecha
-            'dias_atraso' => $dias_atraso > 0 ? (int)$dias_atraso : 0, // Registra los días de atraso (opcional)
-        ]);
-
-        $this->prestamoModel->update($prestamo_id, ['estado' => 'devuelto', 'fecha_devolucion' => $fecha_devolucion]); // Actualiza el estado del préstamo
-        $libro = $this->libroModel->find($prestamo['libro_id']); // Busca el libro asociado
-        $this->libroModel->update($prestamo['libro_id'], ['cantidad' => $libro['cantidad'] + 1, 'estado' => 'disponible']); // Restaura la disponibilidad
-        return redirect()->to('/prestamo'); // Redirige a la lista de préstamos
+     public function guardar(){
+        //$usuario = new usuario();
+        //$carnet = $this->request->getVar('carnet');
+        //$usu = $usuario->where('carnet',$carnet)->first();
+        $libro_id =  $this->request->getVar('libro_id');
+        $libro = new libromodel();
+        $lib = $libro->where('id',$libro_id)->first();
+        $data=[
+            "libro_id" => $lib['id'],
+            "usuario_id" => $this->request->getVar('usuario_id'),
+            "fecha_devolucion" => $this->request->getVar('fecha_devolucion'),
+            "dias_atraso" => 0
+        ];
+        $devo = new devolucionModel();        
+        $devo->insert($data);
+        //actualizar libro
+        $datalib = [
+            'titulo' => $lib['titulo'], 
+            'autor' => $lib['autor'], 
+            'género' => $lib['género'], 
+            'páginas' => $lib['páginas'],
+            'Ejemplar' => $lib['Ejemplar'],
+            'cantidad' => $lib['cantidad'],
+            'nivel' => $lib['nivel'],
+            'estado' => 'disponible'
+        ];
+        $libro->update($lib['id'],$datalib);
+        return $this->response->redirect(site_url('/devoluciones'));
     }
 }
