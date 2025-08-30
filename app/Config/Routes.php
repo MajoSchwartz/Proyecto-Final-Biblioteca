@@ -6,6 +6,7 @@ use CodeIgniter\Router\RouteCollection;
  * @var RouteCollection $routes
  */
 
+
 //Rutas para Login
 $routes->get('/', 'Login::index');
 $routes->post('login/autenticar', 'Login::autenticar');
