@@ -1,12 +1,17 @@
 <?=$cabecera?>
 
-<div class="d-flex justify-content-center">
-    <h2>MÓDULO DE DEVOLUCIONES </h2>
+<div class="d-flex justify-content-center mb-3">
+    <h2 class="card-title">MÓDULO DE PRÉSTAMOS</h2>
 </div>
-    <a class="btn btn-danger" style="margin-left:70px;" href="<?=base_url('panel')?>">Salir</a>
-<br/>
-    <table class="table table-light table-hover" style="width: 90%; min-width: 800px; margin-left: auto; margin-right: auto;">
-            <thead class="thead-light">
+
+<!-- Botón para salir al panel principal -->
+<div class="d-flex justify-content-end mb-3" style="width: 90%; margin: auto;">
+    <a class="btn btn-danger" href="<?=base_url('panel')?>">Regresar</a>
+</div>
+
+    <div class="table-responsive">
+        <table class="table table-light table-hover" style="width: 90%; min-width: 800px; margin-left: auto; margin-right: auto;">
+            <thead class="table-dark text-center">
                 <tr>
                     <th>#</th>
                     <th style="word-wrap: break-word; white-space: normal; max-width: 200px;">Título</th>

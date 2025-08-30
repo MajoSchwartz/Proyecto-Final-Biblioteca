@@ -2,12 +2,12 @@
 <div class="d-flex justify-content-center">
     <h2>LISTADO DE LIBROS</h2>
 </div>
-<br/>
-<a class="btn btn-success" style="margin-left:70px;" href="<?=base_url('crearl')?>">Crear un libro</a>
-<br/>
-<br/>
+<div class="d-flex justify-content-between mb-3" style="width: 90%; margin: auto;">
+    <a class="btn btn-success" href="<?=base_url('crearl')?>">Crear un libro</a>
+    <a class="btn btn-danger" href="<?=base_url('panel')?>">Regresar</a>
+</div>
         <table class="table table-light table-hover" style="width: 90%; min-width: 800px; margin-left: auto; margin-right: auto;">
-            <thead class="thead-light">
+            <thead class="thead-dark">
                 <tr>
                     <th>#</th>
                     <th style="word-wrap: break-word; white-space: normal; max-width: 200px;">Título</th>

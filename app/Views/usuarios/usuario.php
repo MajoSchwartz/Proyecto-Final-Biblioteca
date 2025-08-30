@@ -1,14 +1,15 @@
 <?=$cabecera?>
-<br/>
-<a class="btn btn-success" style="margin-left:70px;" href="<?=base_url('usuarios/crear')?>">Crear un usuario</a>
-<div class="d-flex justify-content-end mb-3">
-                <a class="btn btn-danger" href="<?=base_url('panel')?>">Regresar</a>
+<div class="d-flex justify-content-center">
+    <h2>LISTADO DE USUARIOS</h2>
 </div>
-<br/>
-<br/>
+<main>
+<div class="d-flex justify-content-between mb-3" style="width: 90%; margin: auto;">
+    <a class="btn btn-success" href="<?=base_url('usuarios/crear')?>">Crear un libro</a>
+    <a class="btn btn-danger" href="<?=base_url('panel')?>">Regresar</a>
+</div>
 
     <table class="table table-light table-hover" style="width: 90%; min-width: 800px; margin-left: auto; margin-right: auto;">
-        <thead class="thead-light">
+        <thead class="thead-dark">
             <tr>
                 <th>id</th>
                 <th>Usuario</th>
@@ -30,7 +31,7 @@
                 <td><?=$usuario['carnet'];?></td>
                 <td><?=$usuario['correo'];?></td>
                 <td><?=$usuario['rol'];?></td>
-                <td><i class="fas fa-lock"></i> Protegida</td> <!-- La contraseña se mantiene oculta -->
+                <td><i class="fas fa-lock"></i> Protegida</td> <!--La contraseña se mantiene oculta -->
                 <td>
                     <a href="<?=base_url('usuarios/editar/'.$usuario['id']);?>" class="btn btn-info" type="button">Editar</a>
                     <a href="<?=base_url('usuarios/borrar/'.$usuario['id']);?>" class="btn btn-danger" type="button">Borrar</a>
@@ -40,5 +41,8 @@
         <?php endforeach; ?>
             </tbody>
         </table>
+
+</main>
+
 <?=$pie?>
 
