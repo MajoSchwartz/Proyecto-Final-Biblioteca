@@ -14,14 +14,11 @@ class Prestamo extends Controller{
 
     public function index()
     {
-        //$db = \config\Database::connect();
-        //$query = $db->table("libros")->get();
+
         $libro = new LibroModel();
         $datos['libros'] = $libro->where('estado',1)->orderBy('titulo','asc')->findAll(); #Obtiene todos los libros de la base de datos
-        //$datos['libros']= $query->getResultArray();
         $datos['cabecera']= view('template/cabecera');
         $datos['pie']= view('template/piepagina');
-        //$data = ['prestamos' => $this->prestamoModel->findAll()]; // Obtiene todos los préstamos
         return view('prestamos/prestamo', $datos); // Muestra la lista de préstamos
     }
 
@@ -37,9 +34,6 @@ class Prestamo extends Controller{
     }
 
      public function guardar(){
-        //$usuario = new usuario();
-        //$carnet = $this->request->getVar('carnet');
-        //$usu = $usuario->where('carnet',$carnet)->first();
         $libro_id =  $this->request->getVar('libro_id');
         $libro = new LibroModel();
         $lib = $libro->where('id',$libro_id)->first();

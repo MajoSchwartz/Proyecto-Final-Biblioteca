@@ -24,14 +24,11 @@ class Devolucion extends Controller{
 
  public function index()
     {
-        //$db = \config\Database::connect();
-        //$query = $db->table("libros")->get();
         $libro = new libromodel();
         $datos['libros'] = $libro->where('estado',2)->orderBy('titulo','asc')->findAll(); #Obtiene todos los libros de la base de datos
         //$datos['libros']= $query->getResultArray();
         $datos['cabecera']= view('template/cabecera');
         $datos['pie']= view('template/piepagina');
-        //$data = ['prestamos' => $this->prestamoModel->findAll()]; // Obtiene todos los préstamos
         return view('devoluciones/devolucion', $datos); // Muestra la lista de préstamos
     }
 
@@ -47,9 +44,6 @@ class Devolucion extends Controller{
     }
 
      public function guardar(){
-        //$usuario = new usuario();
-        //$carnet = $this->request->getVar('carnet');
-        //$usu = $usuario->where('carnet',$carnet)->first();
         $libro_id =  $this->request->getVar('libro_id');
         $libro = new libromodel();
         $lib = $libro->where('id',$libro_id)->first();
