@@ -1,7 +1,7 @@
 <?=$cabecera?>
 
 <div class="d-flex justify-content-center mb-3">
-    <h2 class="card-title">MÓDULO DE PRÉSTAMOS</h2>
+    <h2 class="card-title">MÓDULO DE DEVOLUCIONES</h2>
 </div>
 
 <!-- Botón para salir al panel principal -->
