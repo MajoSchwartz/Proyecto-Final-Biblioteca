@@ -9,7 +9,6 @@ class LibroModel extends Model
     protected $primaryKey = 'id';
     protected $allowedFields = ['titulo', 'autor', 'género', 'páginas', 'Ejemplar', 'cantidad', 'nivel', 'estado']; #campos de la tabla
     protected $returnType = 'array';
-    protected $useTimestamps = false; // Desactiva timestamps si no los usas
 
     // Reglas de validación
     protected $validationRules = [

@@ -1,74 +1,55 @@
 <?=$cabecera?>
-
-<!-- Tarjeta visual para el formulario -->
 <div class="card shadow mt-4">
     <div class="card-body">
-        <h5 class="card-title text-center">Registrar Préstamo</h5>
-        <p class="card-text">
-
-        <!-- Formulario que envía los datos al controlador -->
-        <form method="post" action="<?=site_url('prestamos/guardar')?>" id="fcrearp">
-
-            <!-- ID oculto del libro -->
-            <input type="hidden" name="libro_id" value="<?=$libro['id']?>">
-
-            <!-- Datos del libro (solo lectura) -->
-            <div class="form-group mb-3">
+        <h5 class="card-title">Ingresa los datos del préstamo</h5>
+        <form action="<?=site_url('prestamos/guardar')?>" method="post" id="fcrearp">
+            <div class="form-group">
                 <label for="titulo">Título:</label>
-                <input id="titulo" value="<?=$libro['titulo']?>" class="form-control" type="text" disabled>
+                <input id="titulo" value="<?=$libro['titulo']?>" class="form-control" type="text" name="titulo" disabled>
             </div>
 
-            <div class="form-group mb-3">
+            <div class="form-group">
                 <label for="autor">Autor:</label>
-                <input id="autor" value="<?=$libro['autor']?>" class="form-control" type="text" disabled>
+                <input id="autor" value="<?=$libro['autor']?>" class="form-control" type="text" name="autor" disabled>
             </div>
 
-            <div class="form-group mb-3">
+            <div class="form-group">
                 <label for="género">Género:</label>
-                <input id="género" value="<?=$libro['género']?>" class="form-control" type="text" disabled>
+                <input id="género" value="<?=$libro['género']?>" class="form-control" type="text" name="género" disabled>
             </div>
 
-            <div class="form-group mb-3">
+            <div class="form-group">
                 <label for="páginas">Páginas:</label>
-                <input id="páginas" value="<?=$libro['páginas']?>" class="form-control" type="number" disabled>
+                <input id="páginas" value="<?=$libro['páginas']?>" class="form-control" type="text" name="páginas" disabled>
             </div>
 
-            <div class="form-group mb-3">
-                <label for="Ejemplar">No. Ejemplar:</label>
-                <input id="Ejemplar" value="<?=$libro['Ejemplar']?>" class="form-control" type="number" disabled>
+            <div class="form-group">
+                <label for="Ejemplar">No. Ejemplar: </label>
+                <input id="Ejemplar" value="<?=$libro['Ejemplar']?>" class="form-control" type="text" name="Ejemplar" disabled>
             </div>
-
-            <!-- Selección del estudiante -->
-            <div class="form-group mb-3">
-                <label for="usuario_id">Estudiante:</label>
-                <select class="form-select" name="usuario_id" id="usuario_id" required>
-                    <option selected disabled value="">Selecciona un estudiante</option>
-                    <?php foreach ($usuarios as $usuario): ?>
-                        <option value="<?= $usuario['id'] ?>">
-                            <?= $usuario['carnet'].' - '.$usuario['nombre'] ?>
-                        </option>
+            
+            <select class ="form-select" name="usuario_id" id="usuario_id" tabindex="1" required>
+                <option selected disabled value="">Selecciona un estudiante</option>
+                <?php foreach ($usuarios as $key => $value): ?> <!-- Se crea una variable para la tabla ususario -->
+                    <option value="<?php echo $value['id'];?>"><?php echo $value['carnet']. ' - '.$value['nombre'];?></option>
                     <?php endforeach ?>
-                </select>
+            </select>
+            <br>
+
+            <div class="col-xs-2"> <!-- Se hace el tamaño del campo más pequeño -->
+                <label for="fecha_prestamo" class="form-label">Fecha de Préstamo:</label><br>
+                <input id="fecha_prestamo" class="form-control" type="date" name="fecha_prestamo">
             </div>
 
-            <!-- Fechas del préstamo -->
-            <div class="form-group mb-3">
-                <label for="fecha_prestamo">Fecha de Préstamo:</label>
-                <input id="fecha_prestamo" class="form-control" type="date" name="fecha_prestamo" required>
+            <div class="col-xs-2"> <!-- Se hace el tamaño del campo más pequeño -->
+                <label for="fecha_devolucion" class="form-label">Fecha de Devolución:</label><br>
+                <input id="fecha_devolucion" class="form-control" type="date" name="fecha_devolucion">
             </div>
-
-            <div class="form-group mb-3">
-                <label for="fecha_devolucion">Fecha de Devolución:</label>
-                <input id="fecha_devolucion" class="form-control" type="date" name="fecha_devolucion" required>
+            <br><br>
+            <div class="d-flex justify-content-center">
+                <button class="btn btn-success" type="submit">Guardar</button>
+                <a href="<?=base_url('prestamo')?>" class="btn btn-info">Regresar</a>
             </div>
-
-            <!-- Botones de acción -->
-            <button class="btn btn-success" type="submit">Guardar</button>
-            <a href="<?=base_url('libro');?>" class="btn btn-info" >Cancelar</a
-
         </form>
-        </p>
     </div>
 </div>
-
-<?=$pie?> <!-- Pie de página común del sistema -->
