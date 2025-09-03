@@ -36,8 +36,11 @@ class Devolucion extends Controller{
     {
         $libro = new LibroModel();
         $lib = $libro->find($libro_id);
+        //var_dump($libro_id);
+        //var_dump($lib);
         $prestamo = new PrestamoModel();
         $presta = $prestamo->where('id', $lib['prestamo_id'])->first();
+        //var_dump($presta);
         $usuarios = new UsuarioModel();
         $usu = $usuarios->where('id',$presta['usuario_id'])->first();
         $datos['libro'] = $lib;

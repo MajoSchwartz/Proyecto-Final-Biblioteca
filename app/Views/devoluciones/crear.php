@@ -55,7 +55,7 @@
 
             <!-- Botones de acción -->
             <button class="btn btn-success" type="submit">Guardar</button>
-            <a href="<?=base_url('libro');?>" class="btn btn-info" >Cancelar</a>
+            <a href="<?=base_url('devolucion');?>" class="btn btn-info" >Cancelar</a>
 
         </form>
         </p>

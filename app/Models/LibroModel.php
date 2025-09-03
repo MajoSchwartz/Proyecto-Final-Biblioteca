@@ -7,7 +7,7 @@ class LibroModel extends Model
 {
     protected $table = 'libros';
     protected $primaryKey = 'id';
-    protected $allowedFields = ['titulo', 'autor', 'género', 'páginas', 'Ejemplar', 'cantidad', 'nivel', 'estado']; #campos de la tabla
+    protected $allowedFields = ['titulo', 'autor', 'género', 'páginas', 'Ejemplar', 'cantidad', 'nivel', 'estado', 'prestamo_id']; #campos de la tabla
     protected $returnType = 'array';
 
     // Reglas de validación
