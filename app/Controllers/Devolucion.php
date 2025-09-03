@@ -77,4 +77,19 @@ class Devolucion extends Controller{
         $libro->update($lib['id'],$datalib);
         return $this->response->redirect(site_url('/devolucion'));
     }
+
+    public function registro() {
+        $db = db_connect();
+        $builder = $db->table('devoluciones');
+        $datos['registros_devoluciones'] = $builder->select('devoluciones.id, devoluciones.libro_id, prestamos.ejemplar, libros.titulo, usuarios.carnet, usuarios.nombre, prestamos.fecha_prestamo, devoluciones.fecha_devolucion, devoluciones.dias_atraso')
+                                       ->join('usuarios', 'usuarios.id = devoluciones.usuario_id')
+                                       ->join('libros','libros.id = devoluciones.libro_id')
+                                       ->join('prestamos','prestamos.id = devoluciones.prestamo_id')
+                                       ->orderBy('prestamos.id','ASC')
+                                       ->get()
+                                       ->getResultArray();
+        $datos['cabecera']= view('template/cabecera');
+        $datos['pie']= view('template/piepagina');
+        return view('devoluciones/listado',$datos);
+    }
 }

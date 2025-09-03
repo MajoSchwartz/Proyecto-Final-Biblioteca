@@ -41,3 +41,5 @@ $routes->get('prestamos/listado', 'Prestamo::listado'); // Registro de préstamo
 $routes->get('devolucion', 'Devolucion::index'); // Lista de devoluciones
 $routes->get('devoluciones/crear/(:num)', 'Devolucion::crear/$1'); // Formulario para registrar devolución
 $routes->post('devoluciones/guardar', 'Devolucion::guardar'); // Guardar devolución
+$routes->get('devoluciones/listado', 'Devolucion::listado');
+$routes->get('devoluciones/registro', 'Devolucion::registro');
