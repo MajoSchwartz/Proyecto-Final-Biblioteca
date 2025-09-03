@@ -57,10 +57,25 @@ class Prestamo extends Controller{
             'Ejemplar' => $lib['Ejemplar'],
             'cantidad' => $lib['cantidad'],
             'nivel' => $lib['nivel'],
-            'estado' => 'prestado'
+            'estado' => 'prestado',
+            'prestamo_id' => $pres->getInsertID()
         ];
         $libro->update($lib['id'],$datalib);
-        return $this->response->redirect(site_url('/prestamo'));
+        return $this->response->redirect(site_url('prestamos/prestamo'));
+    }
+
+    public function registro() {
+        $db = db_connect();
+        $builder = $db->table('prestamos');
+        $datos['registros_prestamos'] = $builder->select('prestamos.id, prestamos.libro_id, prestamos.ejemplar, libros.titulo, usuarios.carnet, usuarios.nombre, prestamos.fecha_prestamo, prestamos.fecha_devolucion')
+                                       ->join('usuarios', 'usuarios.id = prestamos.usuario_id')
+                                       ->join('libros','libros.id = prestamos.libro_id')
+                                       ->orderBy('prestamos.id','ASC')
+                                       ->get()
+                                       ->getResultArray();
+        $datos['cabecera']= view('template/cabecera');
+        $datos['pie']= view('template/piepagina');
+        return view('prestamos/listado',$datos);
     }
 
 

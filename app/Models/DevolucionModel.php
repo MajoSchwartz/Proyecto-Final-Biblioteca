@@ -6,7 +6,7 @@ use CodeIgniter\Model;
 class DevolucionModel extends Model{
     protected $table = 'devoluciones';
     protected $primaryKey = 'id';
-    protected $allowedFields = ['prestamo_id', 'fecha_devolucion', 'dias_atraso'];
+    protected $allowedFields = ['prestamo_id', 'fecha_devolucion', 'dias_atraso', 'libro_id', 'usuario_id'];
     protected $returnType = 'array';
 
     public function create()

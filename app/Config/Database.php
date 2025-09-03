@@ -31,7 +31,7 @@ class Database extends Config
         'password'     => '', 
         'database'     => 'biblioteca',
         'DBDriver'     => 'MySQLi',
-        'DBPrefix'     => 'biblioteca_',
+        'DBPrefix'     => '',
         'pConnect'     => false,
         'DBDebug'      => (ENVIRONMENT !== 'production'), #para correr el programa sin la retroalimentación de errores. 
         'charset'      => 'utf8mb4',
