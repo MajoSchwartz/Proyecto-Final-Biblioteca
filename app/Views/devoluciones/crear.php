@@ -37,23 +37,20 @@
                 <input id="Ejemplar" value="<?=$libro['Ejemplar']?>" class="form-control" type="number" disabled>
             </div>
 
-            <!-- Selección del estudiante -->
             <div class="form-group mb-3">
-                <label for="usuario_id">Estudiante:</label>
-                <select class="form-select" name="usuario_id" id="usuario_id" required>
-                    <option selected disabled value="">Selecciona un estudiante</option>
-                    <?php foreach ($usuarios as $usuario): ?>
-                        <option value="<?= $usuario['id'] ?>">
-                            <?= $usuario['carnet'].' - '.$usuario['nombre'] ?>
-                        </option>
-                    <?php endforeach ?>
-                </select>
+                <label for="Estudiante">Estudiante</label>
+                <input id="Estudiante" value="<?=$usuario['carnet'].' '.$usuario['nombre']?>" class="form-control" type="text" disabled>
+            </div>
+
+            <div class="form-group mb-3">
+                <label for="fecha_prestamo">Fecha de Préstamo</label>
+                <input id="fecha_prestamo" value="<?php echo $prestamo["fecha_prestamo"];?>" class="form-control" type="datetime-local" disabled>
             </div>
 
             <!-- Fecha de devolución -->
             <div class="form-group mb-3">
                 <label for="fecha_devolucion">Fecha de Devolución:</label>
-                <input id="fecha_devolucion" class="form-control" type="date" name="fecha_devolucion" required>
+                <input id="fecha_devolucion" value="<?php echo $prestamo['fecha_devolucion'];?>" class="form-control" type="datetime-local" name="fecha_devolucion" required>
             </div>
 
             <!-- Botones de acción -->

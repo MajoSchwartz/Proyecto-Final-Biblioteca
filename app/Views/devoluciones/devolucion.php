@@ -7,6 +7,7 @@
 <!-- Botón para salir al panel principal -->
 <div class="d-flex justify-content-end mb-3" style="width: 90%; margin: auto;">
     <a class="btn btn-danger" href="<?=base_url('panel')?>">Regresar</a>
+    <a class="btn btn-info" href="<?=base_url('prestamos/registro')?>">Regresar</a>
 </div>
 
     <div class="table-responsive">
@@ -22,6 +23,7 @@
                     <th>Cantidad</th>
                     <th>Nivel</th>
                     <th>Estado</th>
+                    <th>No. Préstamo</th>
                     <th>Acciones</th>
                 </tr>
             </thead>
@@ -37,6 +39,7 @@
                     <td><?=$libro['cantidad'];?></td>
                     <td><?=$libro['nivel'];?></td>
                     <td><?=$libro['estado'];?></td>
+                    <td><?=$libro['prestamo_id'];?></td>
                     <td>
                         <a href="<?=base_url('devoluciones/crear/'.$libro['id']);?>" class="btn btn-info" type="button">Devolver</a>
                     </td>

@@ -34,10 +34,15 @@ class Devolucion extends Controller{
 
     public function crear($libro_id)
     {
-        $libro = new libromodel();
-        $datos['libro'] = $libro->find($libro_id); // Busca el préstamo por ID
+        $libro = new LibroModel();
+        $lib = $libro->find($libro_id);
+        $prestamo = new PrestamoModel();
+        $presta = $prestamo->where('id', $lib['prestamo_id'])->first();
         $usuarios = new UsuarioModel();
-        $datos['usuarios'] = $usuarios->orderBy('carnet','asc')->findAll();
+        $usu = $usuarios->where('id',$presta['usuario_id'])->first();
+        $datos['libro'] = $lib;
+        $datos['usuario'] = $usu;
+        $datos['prestamo'] = $presta;
         $datos['cabecera']= view('template/cabecera');
         $datos['pie']= view('template/piepagina');
         return view('devoluciones/crear',$datos);

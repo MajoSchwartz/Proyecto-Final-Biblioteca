@@ -7,7 +7,7 @@
                 <label for="titulo">Título:</label>
                 <input id="titulo" value="<?=$libro['titulo']?>" class="form-control" type="text" name="titulo" disabled>
             </div>
-
+            <input type="hidden" name="libro_id" value="<?=$libro['id']?>">
             <div class="form-group">
                 <label for="autor">Autor:</label>
                 <input id="autor" value="<?=$libro['autor']?>" class="form-control" type="text" name="autor" disabled>

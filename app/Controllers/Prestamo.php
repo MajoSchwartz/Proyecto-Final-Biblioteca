@@ -61,7 +61,7 @@ class Prestamo extends Controller{
             'prestamo_id' => $pres->getInsertID()
         ];
         $libro->update($lib['id'],$datalib);
-        return $this->response->redirect(site_url('prestamos/prestamo'));
+        return $this->response->redirect(site_url('/prestamo'));
     }
 
     public function registro() {
