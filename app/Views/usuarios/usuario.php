@@ -5,6 +5,7 @@
 <main>
 <div class="d-flex justify-content-between mb-3" style="width: 90%; margin: auto;">
     <a class="btn btn-success" href="<?=base_url('usuarios/crear')?>">Crear un usuario</a>
+    <a class="btn btn-primary" href="<?= base_url('reporte/usuarios') ?>" target="_blank">Generar reporte</a>
     <a class="btn btn-danger" href="<?=base_url('panel')?>">Regresar</a>
 </div>
 
