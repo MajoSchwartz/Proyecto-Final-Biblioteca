@@ -6,6 +6,7 @@
 
 <!-- Botones de navegación por estado -->
 <div class="d-flex justify-content-end mb-3" style="width: 90%; margin: auto;">
+    <a href="<?=base_url('reportes/libros/estado/disponible')?>" class="dropdown-item" target="_blank">Disponibles</a>
     <a href="<?=base_url('libros/todos')?>" class="btn btn-primary me-2">Todos</a>
     <a href="<?=base_url('libros/prestado')?>" class="btn btn-warning">Prestados</a>
     <a href="<?=base_url('libros/danado')?>" class="btn btn-danger">Dañados</a>

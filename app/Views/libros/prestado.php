@@ -6,6 +6,7 @@
 
 <!-- Botones de navegación por estado -->
 <div class="d-flex justify-content-end mb-3" style="width: 90%; margin: auto;">
+    <a href="<?=site_url('reportes/libros-prestados-pdf')?>" target="_blank" class="btn btn-primary">Exportar PDF</a>
     <a href="<?=base_url('libros/todos')?>" class="btn btn-primary me-2">Todos</a>
     <a href="<?=base_url('libros/disponible')?>" class="btn btn-success me-2">Disponibles</a>
     <a href="<?=base_url('libros/danado')?>" class="btn btn-danger">Dañados</a>

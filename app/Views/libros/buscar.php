@@ -6,7 +6,7 @@
 
 <div class="text-center mb-3">
     <p>Buscaste: <strong><?= esc($query) ?></strong></p>
-    <a href="<?=base_url('libros/libro')?>" class="btn btn-outline-dark">Volver al listado completo</a>
+    <a href="<?=base_url('libro')?>" class="btn btn-outline-dark">Volver al listado completo</a>
 </div>
 
 <?php if (empty($libros)): ?>
