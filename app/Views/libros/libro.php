@@ -25,10 +25,10 @@
                         Generar reporte
                     </button>
                     <div class="dropdown-menu">
-                        <a class="dropdown-item" href="<?=base_url('libros/todos')?>" target="_blank">Todos</a>
-                        <a class="dropdown-item" href="<?=base_url('reportes/disponible')?>" target="_blank">Disponibles</a>
-                        <a class="dropdown-item" href="<?=base_url('reportes/prestado')?>" target="_blank">Prestados</a>
-                        <a class="dropdown-item" href="<?=base_url('reportes/dañado')?>" target="_blank">Dañados</a>
+                        <a class="dropdown-item" href="<?=base_url('libros/todos')?>">Todos</a>
+                        <a class="dropdown-item" href="<?=base_url('libros/disponible')?>">Disponibles</a>
+                        <a class="dropdown-item" href="<?=base_url('libros/prestado')?>">Prestados</a>
+                        <a class="dropdown-item" href="<?=base_url('libros/danado')?>">Dañados</a>
                     </div>
                 </div>
 

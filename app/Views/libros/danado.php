@@ -8,7 +8,7 @@
 <div class="d-flex justify-content-end mb-3" style="width: 90%; margin: auto;">
     <a href="<?=base_url('libros/todos')?>" class="btn btn-primary me-2">Todos</a>
     <a href="<?=base_url('libros/disponible')?>" class="btn btn-success me-2">Disponibles</a>
-    <a href="<?=base_url('libros/dañado')?>" class="btn btn-warning">Prestados</a>
+    <a href="<?=base_url('libros/prestado')?>" class="btn btn-warning">Prestados</a>
 </div>
 
 <!-- Tabla -->

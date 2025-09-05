@@ -41,7 +41,7 @@ class Libro extends Controller{
         $datos['libros'] = $libro->where('estado', 'disponible')->orderBy('titulo', 'asc')->findAll();
         $datos['cabecera'] = view('template/cabecera');
         $datos['pie'] = view('template/piepagina');
-        return view('libros/disponibles', $datos);
+        return view('libros/disponible', $datos);
     }
 
     public function prestados()
@@ -50,7 +50,7 @@ class Libro extends Controller{
         $datos['libros'] = $libro->where('estado', 'prestado')->orderBy('titulo', 'asc')->findAll();
         $datos['cabecera'] = view('template/cabecera');
         $datos['pie'] = view('template/piepagina');
-        return view('libros/prestados', $datos);
+        return view('libros/prestado', $datos);
     }
 
     public function danados()
@@ -59,7 +59,7 @@ class Libro extends Controller{
         $datos['libros'] = $libro->where('estado', 'dañado')->orderBy('titulo', 'asc')->findAll();
         $datos['cabecera'] = view('template/cabecera');
         $datos['pie'] = view('template/piepagina');
-        return view('libros/danados', $datos);
+        return view('libros/danado', $datos);
     }
 
 

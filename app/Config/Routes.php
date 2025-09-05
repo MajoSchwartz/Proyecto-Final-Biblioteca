@@ -31,7 +31,7 @@ $routes->get('borrarl/(:num)', 'Libro::borrar/$1');
 $routes->get('libros/todos', 'Libro::todos');
 $routes->get('libros/disponible', 'Libro::disponibles');
 $routes->get('libros/prestado', 'Libro::prestados');
-$routes->get('libros/dañado', 'Libro::danados');
+$routes->get('libros/danado', 'Libro::danados');
 
 
 
