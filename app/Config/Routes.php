@@ -28,6 +28,7 @@ $routes->post('guardarl', 'Libro::guardar');
 $routes->get('editarl/(:num)', 'Libro::editar/$1');
 $routes->post('actualizarl', 'Libro::actualizar');
 $routes->get('borrarl/(:num)', 'Libro::borrar/$1');
+$routes->get('libros/buscar', 'Libro::buscar');
 $routes->get('libros/todos', 'Libro::todos');
 $routes->get('libros/disponible', 'Libro::disponibles');
 $routes->get('libros/prestado', 'Libro::prestados');

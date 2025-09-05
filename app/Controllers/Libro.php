@@ -141,4 +141,26 @@ class Libro extends Controller{
         return $this->response->redirect(site_url('/libro'));
         #$this->libroModel->delete($id); #Elimina el libro de la base de datos
     }
+
+    public function buscar()
+    {
+        $libro = new LibroModel();
+        $query = $this->request->getGet('q');
+
+        $datos['libros'] = $libro
+            ->groupStart()
+                ->like('titulo', $query)
+                ->orLike('autor', $query)
+            ->groupEnd()
+            ->orderBy('titulo', 'asc')
+            ->findAll();
+
+        $datos['cabecera'] = view('template/cabecera');
+        $datos['pie'] = view('template/piepagina');
+        $datos['query'] = $query;
+
+        return view('libros/buscar', $datos);
+    }
+
+
 }
