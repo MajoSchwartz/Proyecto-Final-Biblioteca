@@ -4,6 +4,7 @@
     <h2>Registro de Préstamos</h2>
 </div>
 <div class="d-flex justify-content-end mb-3" style="width: 90%; margin: auto;">
+    <a href="<?=site_url('reportes/prestamos-pdf')?>" class="btn btn-primary">Exportar PDF</a>
     <a class="btn btn-danger" href="<?=base_url('prestamo')?>">Salir</a>
 </div>
 <br>
@@ -29,8 +30,8 @@
                 <td><?=$libro['libro_id'];?></td>
                 <td><?=$libro['ejemplar'];?></td>
                 <td><?=$libro['titulo'];?></td>
-                <td><?=$libro['carnet'];?></td>
                 <td><?=substr($libro['nombre'], 0, 20);?></td>
+                <td><?=$libro['carnet'];?></td>
                 <td><?=date("d/m/Y",strtotime($libro['fecha_prestamo']));?></td>
                 <td><?=date('d/m/Y', strtotime($libro['fecha_devolucion']));?></td>
             </tr>

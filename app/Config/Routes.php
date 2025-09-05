@@ -43,6 +43,7 @@ $routes->get('devoluciones/crear/(:num)', 'Devolucion::crear/$1'); // Formulario
 $routes->post('devoluciones/guardar', 'Devolucion::guardar'); // Guardar devolución
 $routes->get('devoluciones/listado', 'Devolucion::listado');
 $routes->get('devoluciones/registro', 'Devolucion::registro');
+$routes->get('reportes/prestamos-pdf', 'Reporte::prestamosPDF');
 
 //Ruta para generar reportes
 $routes->get('reporte/libros', 'Reporte::libros'); //reporte de libros

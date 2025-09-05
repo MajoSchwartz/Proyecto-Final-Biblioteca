@@ -3,7 +3,7 @@
     <h2>Registro de Devoluciones</h2>
 </div>
 <div class="d-flex justify-content-center">
-    <a <button class="btn btn-danger" href="<?=base_url('devolución')?>">Regresar</a>
+    <a <button class="btn btn-danger" href="<?=base_url('devolucion')?>">Regresar</a>
 </div>
 <br>
 <br>
