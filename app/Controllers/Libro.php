@@ -26,6 +26,43 @@ class Libro extends Controller{
         return view('libros/libro', $datos); #Muestra la vista con la lista de libros
     }
 
+    public function todos()
+    {
+        $libro = new LibroModel();
+        $datos['libros'] = $libro->orderBy('titulo', 'asc')->findAll();
+        $datos['cabecera'] = view('template/cabecera');
+        $datos['pie'] = view('template/piepagina');
+        return view('libros/todos', $datos);
+    }
+
+    public function disponibles()
+    {
+        $libro = new LibroModel();
+        $datos['libros'] = $libro->where('estado', 'disponible')->orderBy('titulo', 'asc')->findAll();
+        $datos['cabecera'] = view('template/cabecera');
+        $datos['pie'] = view('template/piepagina');
+        return view('libros/disponibles', $datos);
+    }
+
+    public function prestados()
+    {
+        $libro = new LibroModel();
+        $datos['libros'] = $libro->where('estado', 'prestado')->orderBy('titulo', 'asc')->findAll();
+        $datos['cabecera'] = view('template/cabecera');
+        $datos['pie'] = view('template/piepagina');
+        return view('libros/prestados', $datos);
+    }
+
+    public function danados()
+    {
+        $libro = new LibroModel();
+        $datos['libros'] = $libro->where('estado', 'dañado')->orderBy('titulo', 'asc')->findAll();
+        $datos['cabecera'] = view('template/cabecera');
+        $datos['pie'] = view('template/piepagina');
+        return view('libros/danados', $datos);
+    }
+
+
     public function crear()
     {
         $data = ['libro' => $this->libroModel->create()]; #Prepara datos iniciales para un nuevo libro

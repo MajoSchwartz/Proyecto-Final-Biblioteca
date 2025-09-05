@@ -28,6 +28,11 @@ $routes->post('guardarl', 'Libro::guardar');
 $routes->get('editarl/(:num)', 'Libro::editar/$1');
 $routes->post('actualizarl', 'Libro::actualizar');
 $routes->get('borrarl/(:num)', 'Libro::borrar/$1');
+$routes->get('libros/todos', 'Libro::todos');
+$routes->get('libros/disponible', 'Libro::disponibles');
+$routes->get('libros/prestado', 'Libro::prestados');
+$routes->get('libros/dañado', 'Libro::danados');
+
 
 
 // Rutas para Prestamo (Crear y eliminar)
@@ -37,14 +42,16 @@ $routes->post('prestamos/guardar', 'Prestamo::guardar'); // Guardar préstamo
 $routes->get('prestamos/registro', 'Prestamo::registro'); // Registro de préstamo
 $routes->get('prestamos/listado', 'Prestamo::listado'); // Registro de préstamo
 
+
 // Rutas para Devolucion (Crear)
 $routes->get('devolucion', 'Devolucion::index'); // Lista de devoluciones
 $routes->get('devoluciones/crear/(:num)', 'Devolucion::crear/$1'); // Formulario para registrar devolución
 $routes->post('devoluciones/guardar', 'Devolucion::guardar'); // Guardar devolución
 $routes->get('devoluciones/listado', 'Devolucion::listado');
 $routes->get('devoluciones/registro', 'Devolucion::registro');
-$routes->get('reportes/prestamos-pdf', 'Reporte::prestamosPDF');
+
 
 //Ruta para generar reportes
 $routes->get('reporte/libros', 'Reporte::libros'); //reporte de libros
 $routes->get('reporte/usuarios', 'Reporte::usuarios'); //reporte de usuarios
+$routes->get('reportes/prestamos-pdf', 'Reporte::prestamosPDF');

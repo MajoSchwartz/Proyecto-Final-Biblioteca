@@ -4,8 +4,8 @@
     <h2>Registro de Préstamos</h2>
 </div>
 <div class="d-flex justify-content-end mb-3" style="width: 90%; margin: auto;">
-    <a href="<?=site_url('reportes/prestamos-pdf')?>" class="btn btn-primary">Exportar PDF</a>
-    <a class="btn btn-danger" href="<?=base_url('prestamo')?>">Salir</a>
+    <a href="<?=site_url('reportes/prestamos-pdf')?>" target="_blank" class="btn btn-primary">Exportar PDF</a>
+    <a class="btn btn-danger" href="<?=base_url('prestamo')?>" >Salir</a>
 </div>
 <br>
 <br>
