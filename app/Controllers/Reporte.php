@@ -30,17 +30,36 @@ class Reporte extends BaseController
             $dompdf->stream('reporte_prestamos.pdf', ['Attachment' => false]);
     }
 
-    public function libros()
+    public function librosTodosPDF()
     {
-        //Obtiene datos de la base de datos
         $libroModel = new LibroModel();
-        $data['libros'] = $libroModel->findAll();
-        $data['cabecera']= view('template/cabecera');
-        $data['pie']= view('template/piepagina');
-        
-        //envía los libros a la vista
-        return view('reportes/libros_html', $data);
+        $datos['libros'] = $libroModel->orderBy('titulo', 'asc')->findAll();
+
+        $html = view('reportes/libros_todos_pdf', $datos);
+
+        $dompdf = new Dompdf();
+        $dompdf->loadHtml($html);
+        $dompdf->setPaper('A4', 'portrait');
+        $dompdf->render();
+        $dompdf->stream('reporte_libros_todos.pdf', ['Attachment' => false]);
     }
+
+    public function librosPorEstadoPDF($estado)
+    {
+        $libroModel = new LibroModel();
+        $datos['libros'] = $libroModel->where('estado', $estado)->orderBy('titulo', 'asc')->findAll();
+        $datos['estado'] = $estado;
+
+        $html = view('reportes/libros_por_estado_pdf', $datos);
+
+        $dompdf = new Dompdf();
+        $dompdf->loadHtml($html);
+        $dompdf->setPaper('A4', 'portrait');
+        $dompdf->render();
+        $dompdf->stream("reporte_libros_{$estado}.pdf", ['Attachment' => false]);
+    }
+    
+
     public function usuarios()
     {
         //Obtiene datos de la base de datos

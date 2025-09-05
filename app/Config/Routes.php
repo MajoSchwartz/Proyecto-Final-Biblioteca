@@ -55,3 +55,4 @@ $routes->get('devoluciones/registro', 'Devolucion::registro');
 $routes->get('reporte/libros', 'Reporte::libros'); //reporte de libros
 $routes->get('reporte/usuarios', 'Reporte::usuarios'); //reporte de usuarios
 $routes->get('reportes/prestamos-pdf', 'Reporte::prestamosPDF');
+$routes->get('reportes/libros-todos-pdf', 'Reporte::librosTodosPDF');
