@@ -31,12 +31,14 @@
 
         <div class="form-group">
             <label for="correo">Correo:</label>
-            <input id="correo" class="form-control" type="email" name="correo" required>
+            <input id="correo" class="form-control" type="email" name="correo" required
+                oninvalid="this.setCustomValidity('Por favor ingresa un correo válido')"
+                oninput="this.setCustomValidity('')">
         </div>
 
         <div class="form-group">
                 <label for="rol">Rol:</label>
-                <select id="rol" class="form-control" name="rol">
+                <select id="rol" class="form-control" name="rol" required>
                     <option value="alumno" <?= set_select('rol', 'alumno', true) ?>>Alumno</option>
                     <option value="bibliotecario" <?= set_select('rol', 'bibliotecario') ?>>Bibliotecario</option>
                     <option value="admin" <?= set_select('rol', 'admin') ?>>Administrador</option>
@@ -45,7 +47,7 @@
 
         <div class="form-group">
             <label for="PASSWORD">Contraseña:</label>
-            <input id="PASSWORD" class="form-control" type="password" name="PASSWORD">
+            <input id="PASSWORD" class="form-control" type="password" name="PASSWORD" required>
         </div>
         <button class="btn btn-success" type="submit">Guardar</button>
         <a href="<?=base_url('libro');?>" class="btn btn-info" >Cancelar</a>

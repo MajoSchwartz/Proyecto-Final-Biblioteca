@@ -11,6 +11,9 @@ use CodeIgniter\Router\RouteCollection;
 $routes->get('/', 'Login::index');
 $routes->post('login/autenticar', 'Login::autenticar');
 $routes->get('panel', 'Login::panel');
+$routes->get('panel/admin', 'Login::panel');
+$routes->get('panel/bibliotecario', 'Login::panel');
+$routes->get('panel/alumno', 'Login::panel');
 $routes->get('login/salir', 'Login::salir');
 
 // Rutas para Usuario (CRUD completo)

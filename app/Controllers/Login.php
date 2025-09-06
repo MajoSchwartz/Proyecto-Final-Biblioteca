@@ -34,11 +34,24 @@ class Login extends Controller{
         if (!session()->get('logged_in')) {
             return redirect()->to('/');
         }
-        return view('panel');
+
+        $rol = session()->get('rol');
+
+        if ($rol === 'admin') {
+            return view('panel/admin');
+        } elseif ($rol === 'bibliotecario') {
+            return view('panel/bibliotecario');
+        } elseif ($rol === 'docente') {
+            return view('panel/docente');
+        } else {
+            return view('panel/alumno');
+        }
     }
+
     public function salir()
     {
         session()->destroy();
         return redirect()->to('/');
     }
+
 }

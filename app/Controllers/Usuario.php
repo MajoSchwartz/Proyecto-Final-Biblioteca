@@ -87,12 +87,12 @@ class Usuario extends Controller{
     public function actualizar(){
         $usuario= new UsuarioModel();
         $datos=[
-            'usuario' => $this->request->getVar('usuario'),
+            'usuario' => $this->request->getPost('usuario'),
             'nombre' => $this->request->getVar('nombre'),
             'carnet' => $this->request->getVar('carnet'), 
-            'correo' => $this->request->getVar('correo'), 
+            'correo' => $this->request->getPost('correo'), 
             'rol' => $this->request->getVar('rol'),
-            'password' => SHA1($this->request->getVar('PASSWORD'))
+            'password' => MD5($this->request->getVar('PASSWORD'))
         ];
         $id= $this->request->getVar('id'); //Recepciona de la interfaz editar el id enviado
         $usuario->update($id,$datos); //Actualizar el usuario utilizando el id y sus datos

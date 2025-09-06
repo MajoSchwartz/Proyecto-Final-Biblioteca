@@ -6,7 +6,7 @@ use CodeIgniter\Model;
 class UsuarioModel extends Model{
     protected $table = 'usuarios'; //tabla de la base de datos
     protected $primaryKey = 'id'; //Indica la clave primaria
-    protected $allowedFields = ['usuario', 'PASSWORD', 'nombre', 'carnet', 'correro', 'rol']; //Activa el acceso a las columnas
+    protected $allowedFields = ['usuario', 'PASSWORD', 'nombre', 'carnet', 'correo', 'rol']; //Activa el acceso a las columnas
     public function verificarUsuario($usuario, $password)
     {
         return $this->where('usuario', $usuario)

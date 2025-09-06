@@ -14,12 +14,19 @@
 </head>
 <body>
     <div class="container mt-4">
-        <h1 class="mb-4">Bienvenido, <?= session('nombre') ?></h1>
+        <h1 class="mb-4">Bienvenido, <?= session('usuario') ?></h1>
+        <?php if (session()->get('rol') === 'admin'): ?>
+            <p>Acceso completo al sistema.</p>
+        <?php elseif (session()->get('rol') === 'bibliotecario'): ?>
+            <p>Gestión de libros y préstamos.</p>
+        <?php else: ?>
+            <p>Explora los libros disponibles para lectura.</p>
+        <?php endif; ?>
 
         <!-- Enlaces a los módulos en una fila responsive -->
         <div class="row mb-4">
             <div class="col-md-3">
-                <a href="<?= base_url('usuario') ?>" class="btn btn-info w-100">Gestionar Usuarios</a>
+                <a href="<?= base_url('usuario') ?>" class="btn btn-info w-100">Ver Usuarios</a>
             </div>
             <div class="col-md-3">
                 <a href="<?= base_url('libro') ?>" class="btn btn-info w-100">Gestionar Libros</a>

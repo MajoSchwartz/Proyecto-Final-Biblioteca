@@ -11,27 +11,29 @@
 
             <div class="form-group">
                 <label for="usuario">Usuario:</label>
-                <input id="usuario" value="<?=$usuario['usuario']?>" class="form-control" type="text" name="usuario">
+                <input id="usuario" value="<?=$usuario['usuario']?>" class="form-control" type="text" name="usuario" required>
             </div>
 
             <div class="form-group">
                 <label for="nombre">Nombre:</label>
-                <input id="nombre" value="<?=$usuario['nombre']?>" class="form-control" type="text" name="nombre">
+                <input id="nombre" value="<?=$usuario['nombre']?>" class="form-control" type="text" name="nombre" required>
             </div>
 
             <div class="form-group">
                 <label for="carnet">Carnet:</label>
-                <input id="carnet" value="<?=$usuario['carnet']?>" class="form-control" type="text" name="carnet">
+                <input id="carnet" value="<?=$usuario['carnet']?>" class="form-control" type="text" name="carnet" required>
             </div>
 
             <div class="form-group">
-                <label for="correo">correo:</label>
-                <input id="correo" value="<?=$usuario['correo']?>" class="form-control" type="text" name="correo">
+                <label for="correo">Correo:</label>
+                <input id="correo" value="<?=$usuario['correo']?>" class="form-control" type="email" name="correo" required
+                    oninvalid="this.setCustomValidity('Por favor ingresa un correo válido')"
+                    oninput="this.setCustomValidity('')">
             </div>
 
             <div class="form-group">
                     <label for="rol">Rol:</label>
-                    <select id="rol" class="form-control" name="rol">
+                    <select id="rol" class="form-control" name="rol" required>
                         <option value="alumno" <?= set_select('rol', 'alumno', $usuario['rol'] === 'alumno') ?>>Alumno</option>
                         <option value="bibliotecario" <?= set_select('rol', 'bibliotecario', $usuario['rol'] === 'bibliotecario') ?>>Bibliotecario</option>
                         <option value="admin" <?= set_select('rol', 'admin', $usuario['rol'] === 'admin') ?>>Administrador</option>
@@ -40,7 +42,7 @@
 
             <div class="form-group">
                 <label for="PASSWORD">Contraseña:</label>
-                <input id="PASSWORD" value="<?=$usuario['usuario']?>" class="form-control" type="password" name="PASSWORD">
+                <input id="PASSWORD" value="<?=$usuario['usuario']?>" class="form-control" type="password" name="PASSWORD" required>
             </div>
             <button class="btn btn-success" type="submit">Actualizar</button>
         </form>
