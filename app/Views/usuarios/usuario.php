@@ -1,12 +1,17 @@
 <?=$cabecera?>
+<?php $rol = session()->get('rol'); ?> <!--Para poder usar el rol en toda la vista -->
 <div class="d-flex justify-content-center">
     <h2>LISTADO DE USUARIOS</h2>
 </div>
 <main>
 <div class="d-flex justify-content-between mb-3" style="width: 90%; margin: auto;">
-    <a class="btn btn-success" href="<?=base_url('usuarios/crear')?>">Crear un usuario</a>
-    <a class="btn btn-primary" href="<?= base_url('reporte/usuarios') ?>">Generar reporte</a>
+    <?php if ($rol === 'admin'): ?>
+        <a class="btn btn-success" href="<?=base_url('usuarios/crear')?>">Crear un usuario</a>
+    <?php elseif (session()->get('rol') === 'bibliotecario'): ?>
+        <a class="btn btn-primary" href="<?= base_url('reporte/usuarios') ?>">Generar reporte</a>
+    <?php endif; ?>
     <a class="btn btn-danger" href="<?=base_url('panel')?>">Regresar</a>
+
 </div>
 
     <table class="table table-light table-hover" style="width: 90%; min-width: 800px; margin-left: auto; margin-right: auto;">

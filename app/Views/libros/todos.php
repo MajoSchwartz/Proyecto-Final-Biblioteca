@@ -8,7 +8,7 @@
  
 <div class="d-flex justify-content-end mb-3" style="width: 90%; margin: auto;">
     <a href="<?=site_url('reportes/libros-todos-pdf')?>" target="_blank" class="btn btn-primary">Exportar PDF</a>
-    <a class="btn btn-danger" href="<?=base_url('prestamo')?>" >Salir</a>
+    <a class="btn btn-danger" href="<?=base_url('libro')?>" >Salir</a>
     <a href="<?=base_url('libros/disponible')?>" class="btn btn-success me-2">Disponibles</a>
     <a href="<?=base_url('libros/prestado')?>" class="btn btn-warning me-2">Prestados</a>
     <a href="<?=base_url('libros/danado')?>" class="btn btn-danger">Dañados</a>

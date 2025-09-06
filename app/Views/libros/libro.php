@@ -1,4 +1,5 @@
 <?=$cabecera?>
+<?php $rol = session()->get('rol'); ?>
 <div class="d-flex justify-content-center">
     <h2>LISTADO DE LIBROS</h2>
 </div>
@@ -19,21 +20,23 @@
             <!-- Columna derecha: botones de acción -->
             <div class="d-flex justify-content-lg-end justify-content-md-start flex-wrap gap-2 mt-md-2 mt-lg-0">
                 <div class="row mb-3">
-                    <a class="btn btn-success" href="<?=base_url('crearl')?>">Crear un libro</a>
-
-                    <div class="dropdown col-md-3">
-                        <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
-                            Generar reporte
-                        </button>
-                        <div class="dropdown-menu">
-                            <a href="<?=base_url('reportes/libros-todos-pdf')?>" class="dropdown-item" target="_blank">Todos</a>
-                            <a href="<?=base_url('reportes/libros/estado/disponible')?>" class="dropdown-item" target="_blank">Disponibles</a>
-                            <a href="<?=base_url('reportes/libros/estado/prestado')?>" class="dropdown-item" target="_blank">Prestados</a>
-                            <a href="<?=base_url('reportes/libros/estado/danado')?>" class="dropdown-item" target="_blank">Dañado</a>
+                    <?php if ($rol == 'admin'): ?>
+                        <a class="btn btn-success" href="<?=base_url('crearl')?>">Crear un libro</a>
+                    <?php elseif (session()->get('rol') === 'bibliotecario'): ?>    
+                        <a class="btn btn-success" href="<?=base_url('crearl')?>">Crear un libro</a>
+                        <div class="dropdown col-md-3">
+                            <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                                Generar reporte
+                            </button>
+                            <div class="dropdown-menu">
+                                <a href="<?=base_url('reportes/libros-todos-pdf')?>" class="dropdown-item" target="_blank">Todos</a>
+                                <a href="<?=base_url('reportes/libros/estado/disponible')?>" class="dropdown-item" target="_blank">Disponibles</a>
+                                <a href="<?=base_url('reportes/libros/estado/prestado')?>" class="dropdown-item" target="_blank">Prestados</a>
+                                <a href="<?=base_url('reportes/libros/estado/danado')?>" class="dropdown-item" target="_blank">Dañado</a>
+                            </div>
                         </div>
-                    </div>
+                    <?php endif; ?>    
                 </div>
-
 
                 <a class="btn btn-danger" href="<?=base_url('panel')?>">Regresar</a>
             </div>
@@ -55,7 +58,9 @@
                         <th>Cantidad</th>
                         <th>Nivel</th>
                         <th>Estado</th>
-                        <th>Acciones</th>
+                        <?php if (in_array($rol, ['admin', 'bibliotecario'])): ?>
+                            <th>Acciones</th>
+                        <?php endif; ?>
                     </tr>
                 </thead>
                 <tbody>
@@ -72,10 +77,17 @@
                         <td><?=$libro['cantidad'];?></td>
                         <td><?=$libro['nivel'];?></td>
                         <td><?=$libro['estado'];?></td>
+
+                        <?php if ($rol === 'admin'): ?>
                         <td>
                             <a href="<?=base_url('editarl/'.$libro['id']);?>" class="btn btn-info" type="button"><i class="fas fa-pencil-alt"></i></a>
                             <a href="<?=base_url('borrarl/'.$libro['id']);?>" class="btn btn-danger" type="button"><i class="fas fa-trash-alt"></i></a>
                         </td>
+                        <?php elseif ($rol === 'bibliotecario'): ?>
+                        <td>
+                            <a href="<?=base_url('editarl/'.$libro['id']);?>" class="btn btn-info" type="button"><i class="fas fa-pencil-alt"></i></a>
+                        </td>
+                        <?php endif; ?>
                     </tr>
                 <?php endforeach; ?>
 
