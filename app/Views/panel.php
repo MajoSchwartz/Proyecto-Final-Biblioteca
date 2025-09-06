@@ -14,7 +14,7 @@
 </head>
 <body>
     <div class="container mt-4">
-        <h1 class="mb-4">Bienvenido, <?= session('usuario') ?></h1>
+        <h1 class="mb-4">Bienvenido, <?= session('nombre') ?></h1>
 
         <!-- Enlaces a los módulos en una fila responsive -->
         <div class="row mb-4">

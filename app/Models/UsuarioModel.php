@@ -10,7 +10,7 @@ class UsuarioModel extends Model{
     public function verificarUsuario($usuario, $password)
     {
         return $this->where('usuario', $usuario)
-                    ->where('PASSWORD', SHA1($password)) #Cifrado de contraseña con SHA1
+                    ->where('PASSWORD', md5($password)) #Cifrado de contraseña con SHA1
                     ->first();
     }
 

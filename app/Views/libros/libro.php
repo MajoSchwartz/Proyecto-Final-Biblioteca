@@ -17,18 +17,20 @@
             </div>
 
             <!-- Columna derecha: botones de acción -->
-            <div class="col-lg-6 col-md-12 d-flex justify-content-lg-end justify-content-md-start flex-wrap gap-2 mt-md-2 mt-lg-0">
-                <a class="btn btn-success" href="<?=base_url('crearl')?>">Crear un libro</a>
+            <div class="d-flex justify-content-lg-end justify-content-md-start flex-wrap gap-2 mt-md-2 mt-lg-0">
+                <div class="row mb-3">
+                    <a class="btn btn-success" href="<?=base_url('crearl')?>">Crear un libro</a>
 
-                <div class="dropdown">
-                    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
-                        Generar reporte
-                    </button>
-                    <div class="dropdown-menu">
-                        <a href="<?=base_url('reportes/libros-todos-pdf')?>" class="dropdown-item" target="_blank">Todos</a>
-                        <a href="<?=base_url('reportes/libros/estado/disponible')?>" class="dropdown-item" target="_blank">Disponibles</a>
-                        <a href="<?=base_url('reportes/libros/estado/prestado')?>" class="dropdown-item" target="_blank">Prestados</a>
-                        <a href="<?=base_url('reportes/libros/estado/danado')?>" class="dropdown-item" target="_blank">Dañado</a>
+                    <div class="dropdown col-md-3">
+                        <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                            Generar reporte
+                        </button>
+                        <div class="dropdown-menu">
+                            <a href="<?=base_url('reportes/libros-todos-pdf')?>" class="dropdown-item" target="_blank">Todos</a>
+                            <a href="<?=base_url('reportes/libros/estado/disponible')?>" class="dropdown-item" target="_blank">Disponibles</a>
+                            <a href="<?=base_url('reportes/libros/estado/prestado')?>" class="dropdown-item" target="_blank">Prestados</a>
+                            <a href="<?=base_url('reportes/libros/estado/danado')?>" class="dropdown-item" target="_blank">Dañado</a>
+                        </div>
                     </div>
                 </div>
 

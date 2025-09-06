@@ -47,7 +47,7 @@ class Usuario extends Controller{
             'carnet' => $this->request->getVar('carnet'), 
             'correo' => $this->request->getVar('correo'), 
             'rol' => $this->request->getVar('rol'),
-            'password' => SHA1($this->request->getVar('PASSWORD'))
+            'password' => md5($this->request->getVar('PASSWORD'))
         ];
 
         log_message('debug', 'Datos recibidos en guardar: ' . print_r($datos, true));

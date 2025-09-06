@@ -20,6 +20,7 @@ class Login extends Controller{
         if ($datosUsuario) {
             session()->set([
                 'usuario' => $datosUsuario['usuario'],
+                'rol' => $datosUsuario['rol'],
                 'logged_in' => true
             ]);
             return redirect()->to('/panel'); #Para el mensaje de bienvenida
