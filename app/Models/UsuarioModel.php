@@ -26,21 +26,6 @@ class UsuarioModel extends Model{
         ];
     }
 
-    protected $validationRules = [
-        'usuario' => 'required|max_length[100]',
-        'nombre' => 'required|max_length[255]',
-        'carnet' => 'required|max_length[20]',
-        'correo' => 'required|valid_email',
-        'rol' => 'required|in_list[alumno,bibliotecario,admin]',
-        'PASSWORD' => 'required|min_length[6]'
-    ];
-
-    protected $validationMessages = [
-        'usuario' => ['required' => 'El nombre de usuario es obligatorio.'],
-        'correo' => ['valid_email' => 'Debes ingresar un correo válido.'],
-        'PASSWORD' => ['min_length' => 'La contraseña debe tener al menos 6 caracteres.']
-    ];
-
     public function saveWithDuplicateCheck(array $data)
 {
     $existingUser = $this->where('carnet', $data['carnet'])->first();

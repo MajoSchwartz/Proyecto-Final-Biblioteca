@@ -7,6 +7,10 @@
 </div>
 <br>
 <br>
+<div class="alert alert-info text-center" style="width: 90%; min-width: 800px; margin-left: auto; margin-right: auto;">
+    Total de devoluciones registradas: <?= count($registros_devoluciones) ?>
+</div>
+
 <div class="table-responsive">
     <table class="table table-light table-hover" style="width: 90%; min-width: 800px; margin-left: auto; margin-right: auto;">
         <thead class="table-dark text-center">
@@ -33,8 +37,9 @@
                 <td><?=$libro['carnet'];?></td>
                 <td><?=substr($libro['nombre'], 0, 20);?></td>
                 <td><?=date("d/m/Y",strtotime($libro['fecha_prestamo']));?></td>
-                <td><?=date('d/m/Y', strtotime($libro['fecha_devolucion']));?></td>
+                <td><?=date('d/m/Y', strtotime($libro['fecha_real']));?></td>
                 <td><?=$libro['dias_atraso'];?></td>
+
             </tr>
         <?php endforeach; ?>
         </tbody>

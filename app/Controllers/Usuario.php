@@ -29,17 +29,6 @@ class Usuario extends Controller{
     public function guardar(){
         $usuario = new UsuarioModel(); //crear una instancia al modelo para capturar la información y  meterla a la BD
         
-        //Validación que los campos estén completos
-        $validacion = $this->validate([
-            'usuario' => 'required|max_length[100]',
-            'nombre' => 'required|max_length[100]',
-            'carnet' => 'required|max_length[100]',
-            'correo' => 'required|valid_email',
-            'rol' => 'required|in_list[alumno,bibliotecario,admin]',
-            'PASSWORD' => 'required|min_length[6]',
-
-        ]);
-        
         //para obtener todos los valores de los campos
         $datos=[
             'usuario' => $this->request->getVar('usuario'),
@@ -47,7 +36,7 @@ class Usuario extends Controller{
             'carnet' => $this->request->getVar('carnet'), 
             'correo' => $this->request->getVar('correo'), 
             'rol' => $this->request->getVar('rol'),
-            'password' => md5($this->request->getVar('PASSWORD'))
+            'PASSWORD' => md5($this->request->getVar('PASSWORD'))
         ];
 
         log_message('debug', 'Datos recibidos en guardar: ' . print_r($datos, true));

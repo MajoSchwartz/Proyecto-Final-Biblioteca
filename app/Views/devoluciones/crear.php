@@ -10,6 +10,7 @@
 
             <!-- ID oculto del libro -->
             <input type="hidden" name="libro_id" value="<?=$libro['id']?>">
+            <input type="hidden" name="usuario_id" value="<?=$usuario['id']?>">
 
             <!-- Datos del libro (solo lectura) -->
             <div class="form-group mb-3">
