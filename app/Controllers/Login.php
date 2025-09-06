@@ -19,6 +19,7 @@ class Login extends Controller{
 
         if ($datosUsuario) {
             session()->set([
+                'id' => $datosUsuario['id'],
                 'usuario' => $datosUsuario['usuario'],
                 'rol' => $datosUsuario['rol'],
                 'logged_in' => true

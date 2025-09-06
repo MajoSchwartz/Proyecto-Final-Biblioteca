@@ -23,7 +23,7 @@
                 <a href="<?= base_url('libro') ?>" class="btn btn-info w-100">Gestionar Libros</a>
             </div>
             <div class="col-md-3">
-                <a href="<?= base_url('prestamo') ?>" class="btn btn-info w-100">Gestionar Préstamos</a>
+                <a href="<?= base_url('prestamos/registro') ?>" class="btn btn-info w-100">Gestionar Préstamos</a>
             </div>
         </div>
 

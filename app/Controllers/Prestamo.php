@@ -65,18 +65,34 @@ class Prestamo extends Controller{
     }
 
     public function registro() {
-        $db = db_connect();
-        $builder = $db->table('prestamos');
-        $datos['registros_prestamos'] = $builder->select('prestamos.id, prestamos.libro_id, prestamos.ejemplar, libros.titulo, usuarios.carnet, usuarios.nombre, prestamos.fecha_prestamo, prestamos.fecha_devolucion')
-                                       ->join('usuarios', 'usuarios.id = prestamos.usuario_id')
-                                       ->join('libros','libros.id = prestamos.libro_id')
-                                       ->orderBy('prestamos.id','ASC')
-                                       ->get()
-                                       ->getResultArray();
-        $datos['cabecera']= view('template/cabecera');
-        $datos['pie']= view('template/piepagina');
-        return view('prestamos/listado',$datos);
+    $db = db_connect();
+    $builder = $db->table('prestamos');
+
+    // Captura el rol y el usuario desde la sesión
+    $rol = session()->get('rol');
+    $usuario_id = session()->get('id'); // ID en la sesión al iniciar
+
+    // Construye la consulta base
+    $builder->select('prestamos.id, prestamos.libro_id, prestamos.ejemplar, libros.titulo, usuarios.carnet, usuarios.nombre, prestamos.fecha_prestamo, prestamos.fecha_devolucion')
+            ->join('usuarios', 'usuarios.id = prestamos.usuario_id')
+            ->join('libros','libros.id = prestamos.libro_id')
+            ->orderBy('prestamos.id','ASC');
+
+    // Aplica el filtro solo si el usuario es alumno
+    if ($rol === 'alumno') {
+        $builder->where('prestamos.usuario_id', $usuario_id);
     }
+
+    // Ejecuta la consulta después de aplicar el filtro
+    $datos['registros_prestamos'] = $builder->get()->getResultArray();
+
+    // Carga las vistas
+    $datos['cabecera'] = view('template/cabecera');
+    $datos['pie'] = view('template/piepagina');
+
+    return view('prestamos/listado', $datos);
+}
+
 
 
 }
