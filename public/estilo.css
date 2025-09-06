@@ -1,0 +1,125 @@
+body {
+    font-family: sans-serif;   
+    height: 100vh;
+    margin: 0px;
+    background-color: #703e36;
+}
+
+h1 { /* Se aplica directamente a la etiqueta h1, no a una clase */
+    font-size: 3rem;
+    font-weight: bold;
+    /*margin-bottom: 30px;*/
+    color: rgb(240, 240, 240);
+}
+
+.login {
+    background-color: white;
+    padding: 40px;
+    border-radius: 20px;
+    max-width: 400px;
+    width: 90%;
+    text-align: left;
+}
+
+h2 {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    color: rgb(240, 240, 240);
+    text-align: center;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    margin: 5px 0px 15px 0px;
+}
+
+button {
+    width: 100%;
+    padding: 15px;
+    border: none;
+    border-radius: 10px;
+    background-color: #C39999;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+button:hover {
+    background-color: #B38E8E;
+}
+
+.error {
+    color: red;
+    font-size: 14px;
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+/* Grid Principal*/
+.gdc1 { grid-area: header; }
+.gdc2 { grid-area: main; }
+.gdc3 { grid-area: footer; }
+
+.grid-container {
+  display: grid;
+  max-height: calc(100vh - 1rem);
+  width: 100%;
+  height: 100%;
+  grid-template-areas:
+    'header'
+    'main'
+    'footer';
+  grid-template-rows: 4rem 1fr 2.2rem;
+  grid-template-columns: 1fr;
+  gap: 5px;
+  /*background-color: #2196F3;*/
+}
+
+.grid-container > div {
+  /*background-color: rgba(255, 255, 255, 0.8);*/
+  text-align: center;
+}
+
+.grid-container .gdc1 {
+	background-color: #776660;
+    height: 100%;
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	line-height: 75px;
+	font-size: 2rem;
+}
+
+.grid-container .gdc2 {
+    background-color:#f6dad6;;
+	max-height: calc(1fr-105px);
+    font-size: 1rem;
+}
+
+.grid-container .gdc3 {
+	background-color: #ebd3ca;
+    font-size: 1rem;
+}
+
+.form-label {
+    display: flex;
+    align-items: start !important;
+    color: white;
+    font-weight: bold;
+}
+
+.form-check {
+    color: white;
+    font-weight: bold;
+} 
+
+.btn {
+    width: auto;
+}
