@@ -36,6 +36,7 @@ class Login extends Controller{
             return redirect()->to('/');
         }
 
+        //Se determina según el rol que vista se mostrará
         $rol = session()->get('rol');
 
         if ($rol === 'admin') {
@@ -49,6 +50,7 @@ class Login extends Controller{
         }
     }
 
+    //Cerrar sesión
     public function salir()
     {
         session()->destroy();

@@ -1,15 +1,14 @@
 body {
-    background-color: #ed1f1f;
-    font-family: sans-serif;
-   
+    font-family: sans-serif;   
     height: 100vh;
     margin: 0px;
+    background-color: #703e36;
 }
 
 h1 { /* Se aplica directamente a la etiqueta h1, no a una clase */
-    font-size: 40px;
+    font-size: 3rem;
     font-weight: bold;
-    margin-bottom: 30px;
+    /*margin-bottom: 30px;*/
     color: rgb(240, 240, 240);
 }
 
@@ -23,10 +22,10 @@ h1 { /* Se aplica directamente a la etiqueta h1, no a una clase */
 }
 
 h2 {
-    font-size: 24px;
+    font-size: 2rem;
     font-weight: bold;
-    margin-bottom: 24px;
-    color: black;
+    margin-bottom: 0.5rem;
+    color: rgb(240, 240, 240);
     text-align: center;
 }
 
@@ -61,92 +60,66 @@ button:hover {
     text-align: center;
     margin-bottom: 15px;
 }
-/*view.libro*/
 
-table { 
-    width: 90%;
-    min-width: 800px;
-    margin: 20px;
-    background-color: #fff;
-    font-family:sans-serif;
-}
+/* Grid Principal*/
+.gdc1 { grid-area: header; }
+.gdc2 { grid-area: main; }
+.gdc3 { grid-area: footer; }
 
-thead {
-    background-color: #f0f0f0;
-}
-
-th, td {
-    padding: 10px;
-    border: 1px solid #ccc;
-    text-align: center;
-    max-width: 200px;
-}
-
-
-th {
-    font-weight: bold;
-    color: #333;
-}
-/*view.editar*/
-/* contenedor card*/
-.card {
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  padding: 20px;
-  margin: 20px;
-  background-color: #fff;
-}
-
-/* Título */
-.card-title {
-  font-size: 20px;
-  margin-bottom: 15px;
-  color: #333;
-}
-
-/* Etiquetas */
-label {
-  display: block;
-  margin-bottom: 5px;
-  font-weight: bold;
-}
-
-/* Campos de entrada */
-input[type="text"],
-input[type="number"],
-select {
+.grid-container {
+  display: grid;
+  max-height: calc(100vh - 1rem);
   width: 100%;
-  padding: 8px;
-  margin-bottom: 15px;
-  border: 1px solid #aaa;
-  border-radius: 4px;
+  height: 100%;
+  grid-template-areas:
+    'header'
+    'main'
+    'footer';
+  grid-template-rows: 4rem 1fr 2.2rem;
+  grid-template-columns: 1fr;
+  gap: 5px;
+  /*background-color: #2196F3;*/
 }
 
-/* Botones */
-button,
-a.btn-info {
-  padding: 8px 16px;
-  border-radius: 4px;
-  color: white;
+.grid-container > div {
+  /*background-color: rgba(255, 255, 255, 0.8);*/
+  text-align: center;
 }
 
-button {
-  background-color: #a72835;
+.grid-container .gdc1 {
+	background-color: #776660;
+    height: 100%;
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	line-height: 75px;
+	font-size: 2rem;
 }
 
-a.btn-info {
-  background-color: #de1919;
+.grid-container .gdc2 {
+    background-color:#f6dad6;;
+	max-height: calc(1fr-105px);
+    font-size: 1rem;
 }
 
-a.btn-info:hover {
-  background-color: #f10d9d;
+.grid-container .gdc3 {
+	background-color: #ebd3ca;
+    font-size: 1rem;
 }
 
-/* Mensaje de error */
-.alert-danger {
-  background-color: #f8d7da;
-  color: #721c24;
-  padding: 10px;
-  border-radius: 4px;
-  margin-bottom: 15px;
+.form-label {
+    display: flex;
+    align-items: start !important;
+    color: white;
+    font-weight: bold;
+}
+
+.form-check {
+    color: white;
+    font-weight: bold;
+} 
+
+.btn {
+    width: auto;
 }

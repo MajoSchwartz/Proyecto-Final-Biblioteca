@@ -22,25 +22,27 @@ class Devolucion extends Controller{
         }
     }
 
- public function index()
+    //Muesre L vista principal del módulo de devoluciones
+    public function index()
     {
-        $libro = new libromodel();
+        $libro = new LibroModel();
+
+        //Obtiene todos los libros con estado prestado
         $datos['libros'] = $libro->where('estado',2)->orderBy('titulo','asc')->findAll(); #Obtiene todos los libros de la base de datos
-        //$datos['libros']= $query->getResultArray();
+        
         $datos['cabecera']= view('template/cabecera');
         $datos['pie']= view('template/piepagina');
+        
         return view('devoluciones/devolucion', $datos); // Muestra la lista de préstamos
     }
 
+    // Muestra el formulario para registrar una devolución
     public function crear($libro_id)
     {
         $libro = new LibroModel();
         $lib = $libro->find($libro_id);
-        //var_dump($libro_id);
-        //var_dump($lib);
         $prestamo = new PrestamoModel();
         $presta = $prestamo->where('id', $lib['prestamo_id'])->first();
-        //var_dump($presta);
         $usuarios = new UsuarioModel();
         $usu = $usuarios->where('id',$presta['usuario_id'])->first();
         $datos['libro'] = $lib;
@@ -51,6 +53,7 @@ class Devolucion extends Controller{
         return view('devoluciones/crear',$datos);
     }
 
+    // Guarda la devolución en la base de datos
      public function guardar(){
         $libro_id =  $this->request->getVar('libro_id');
         $libro = new libromodel();
@@ -62,9 +65,11 @@ class Devolucion extends Controller{
             "fecha_devolucion" => $this->request->getVar('fecha_devolucion'),
             "dias_atraso" => 0
         ];
-        $devo = new devolucionModel();   
-        $devo->insert($data);
-        //actualizar libro
+        $devo = new DevolucionModel();   
+        $devo->insert($data); //Inserta la devolución
+
+
+        // Actualiza el estado del libro a "disponible"
         $datalib = [
             'titulo' => $lib['titulo'], 
             'autor' => $lib['autor'], 
@@ -76,11 +81,11 @@ class Devolucion extends Controller{
             'estado' => 'disponible',
             'prestamo' => 0
         ];
-        var_dump($datalib);
         $libro->update(intval($lib['id']),$datalib);
         return $this->response->redirect(site_url('/devolucion'));
     }
 
+    // Muestra el historial de devoluciones registradas
     public function registro() {
         $db = db_connect();
         $builder = $db->table('devoluciones');
@@ -94,7 +99,7 @@ class Devolucion extends Controller{
             ->get()
             ->getResultArray();
 
-        // Cálculo de días de atraso
+        // Cálculo de días de atraso - por trabajar
         foreach ($datos['registros_devoluciones'] as &$devolucion) {
             $fecha_limite = new \DateTime($devolucion['fecha_limite']);
             $fecha_real = new \DateTime($devolucion['fecha_real']);

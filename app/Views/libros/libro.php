@@ -7,42 +7,43 @@
 <br>
 
     <div class="container mb-4">
-        <div class="row align-items-center g-2">
+    <div class="row align-items-center">
 
-            <!-- Columna izquierda: barra de búsqueda -->
-            <div class="col-lg-6 col-md-12">
-                <form method="get" action="<?=base_url('libros/buscar')?>" class="d-flex">
-                    <input type="text" name="q" class="form-control me-2" placeholder="Buscar libro por título o autor">
-                    <button type="submit" class="btn btn-outline-secondary">Buscar</button>
-                </form>
-            </div>
-
-            <!-- Columna derecha: botones de acción -->
-            <div class="d-flex justify-content-lg-end justify-content-md-start flex-wrap gap-2 mt-md-2 mt-lg-0">
-                <div class="row mb-3">
-                    <?php if ($rol == 'admin'): ?>
-                        <a class="btn btn-success" href="<?=base_url('crearl')?>">Crear un libro</a>
-                    <?php elseif (session()->get('rol') === 'bibliotecario'): ?>    
-                        <a class="btn btn-success" href="<?=base_url('crearl')?>">Crear un libro</a>
-                        <div class="dropdown col-md-3">
-                            <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
-                                Generar reporte
-                            </button>
-                            <div class="dropdown-menu">
-                                <a href="<?=base_url('reportes/libros-todos-pdf')?>" class="dropdown-item" target="_blank">Todos</a>
-                                <a href="<?=base_url('reportes/libros/estado/disponible')?>" class="dropdown-item" target="_blank">Disponibles</a>
-                                <a href="<?=base_url('reportes/libros/estado/prestado')?>" class="dropdown-item" target="_blank">Prestados</a>
-                                <a href="<?=base_url('reportes/libros/estado/danado')?>" class="dropdown-item" target="_blank">Dañado</a>
-                            </div>
-                        </div>
-                    <?php endif; ?>    
-                </div>
-
-                <a class="btn btn-danger" href="<?=base_url('panel')?>">Regresar</a>
-            </div>
-
+        <!-- Columna izquierda: barra de búsqueda -->
+        <div class="col-lg-6 col-md-12 mb-3 mb-lg-0">
+            <form method="get" action="<?= base_url('libros/buscar') ?>" class="d-flex">
+                <input type="text" name="q" class="form-control mr-2" placeholder="Buscar libro por título o autor">
+                <button type="submit" class="btn btn-outline-secondary">Buscar</button>
+            </form>
         </div>
+
+        <!-- Columna derecha: botones de acción -->
+        <div class="col-lg-6 col-md-12 d-flex flex-column flex-lg-row justify-content-lg-end align-items-lg-center gap-3">
+            <?php if ($rol === 'admin' || $rol === 'bibliotecario'): ?>
+                <a class="btn btn-success mb-3 mb-lg-0 mr-lg-3" href="<?= base_url('crearl') ?>">Crear un libro</a>
+            <?php endif; ?>
+
+            <?php if ($rol === 'bibliotecario'): ?>
+                <div class="dropdown mb-3 mb-lg-0 mr-lg-3">
+                    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                        Generar reporte
+                    </button>
+                    <div class="dropdown-menu">
+                        <a href="<?= base_url('reportes/libros-todos-pdf') ?>" class="dropdown-item" target="_blank">Todos</a>
+                        <a href="<?= base_url('reportes/libros/estado/disponible') ?>" class="dropdown-item" target="_blank">Disponibles</a>
+                        <a href="<?= base_url('reportes/libros/estado/prestado') ?>" class="dropdown-item" target="_blank">Prestados</a>
+                        <a href="<?= base_url('reportes/libros/estado/danado') ?>" class="dropdown-item" target="_blank">Dañado</a>
+                    </div>
+                </div>
+            <?php endif; ?>
+
+
+            <a class="btn btn-danger" href="<?= base_url('panel') ?>">Regresar</a>
+        </div>
+
     </div>
+</div>
+
 
 
 

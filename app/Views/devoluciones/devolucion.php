@@ -4,14 +4,17 @@
     <h2 class="card-title">MÓDULO DE DEVOLUCIONES</h2>
 </div>
 
-<!-- Botón para salir al panel principal -->
-<div class="d-flex justify-content-end mb-3" style="width: 90%; margin: auto;">
-    <a class="btn btn-danger" href="<?=base_url('panel')?>">Regresar</a>
-    <a class="btn btn-info" href="<?=base_url('devoluciones/registro')?>">Registro</a>
+<!-- Botones de navegacion: Regresar y listado -->
+<div class="d-flex flex-column flex-md-row justify-content-end align-items-center mb-4" style="width: 90%; margin: auto; gap: 15px;">
+    <a class="btn btn-info mb-2 mb-md-0" href="<?= base_url('devoluciones/registro') ?>">Registro</a>
+    <a class="btn btn-danger mb-2 mb-md-0" href="<?= base_url('panel') ?>">Regresar</a>
 </div>
 
+
     <div class="table-responsive">
+        
         <table class="table table-light table-hover" style="width: 90%; min-width: 800px; margin-left: auto; margin-right: auto;">
+            <!-- Encabezado de tabla-->
             <thead class="table-dark text-center">
                 <tr>
                     <th>#</th>

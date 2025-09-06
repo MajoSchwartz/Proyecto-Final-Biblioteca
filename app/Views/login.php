@@ -1,88 +1,111 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
-    <title>Login</title>
+    <meta charset="UTF-8">
+    <title>Biblioteca Escolar</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
     <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
         body {
-    background-color: #a35d53;
-    font-family: sans-serif;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0px;
-    }
+            font-family: 'Playfair Display', serif;
+            height: 100vh;
+            display: flex;
+        }
 
-    h1 { /* Se aplica directamente a la etiqueta h1, no a una clase */
-        font-size: 40px;
-        font-weight: bold;
-        margin-bottom: 30px;
-        color: rgb(240, 240, 240);
-    }
+        .left {
+            flex: 1;
+            background-image: url('<?= base_url('fondo-biblioteca.jpg') ?>'); /* Imagen en carpeta pública*/
+            background-size: cover;
+            background-position: center;
+        }
 
-    .login {
-        background-color: white;
-        padding: 40px;
-        border-radius: 20px;
-        max-width: 400px;
-        width: 90%;
-        text-align: left;
-    }
+        .right {
+            flex: 1;
+            background-color: #592C22;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
 
-    h2 {
-        font-size: 24px;
-        font-weight: bold;
-        margin-bottom: 24px;
-        color: black;
-        text-align: center;
-    }
+        .login-box {
+            background-color: rgba(255, 255, 255, 0.95);
+            padding: 40px;
+            border-radius: 15px;
+            width: 350px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.4);
+        }
 
-    input {
-        width: 100%;
-        padding: 10px;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-        box-sizing: border-box;
-        margin: 5px 0px 15px 0px;
-    }
+        .login-box h1 {
+            text-align: center;
+            font-size: 28px;
+            margin-bottom: 25px;
+            color: #333;
+        }
 
-    button {
-        width: 100%;
-        padding: 15px;
-        border: none;
-        border-radius: 10px;
-        background-color: #C39999;
-        color: white;
-        font-size: 16px;
-        cursor: pointer;
-        font-weight: bold;
-    }
+        label {
+            font-weight: bold;
+            margin-bottom: 5px;
+            display: block;
+            color: #444;
+        }
 
-    button:hover {
-        background-color: #B38E8E;
-    }
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
 
-    .error {
-        color: red;
-        font-size: 14px;
-        text-align: center;
-        margin-bottom: 15px;
-    }
+        button {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            background-color: #C39999;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #B38E8E;
+        }
+
+        .error {
+            color: #ff6b6b;
+            font-size: 14px;
+            text-align: center;
+            margin-bottom: 15px;
+        }
     </style>
 </head>
 <body>
-    <h1>Biblioteca Escolar</h1>
-    <div class="login">
-        <h2>Iniciar Sesión</h2>
-        <?php if(session()->getFlashdata('error')): ?>
-            <p class="error"><?= session()->getFlashdata('error') ?></p>
-        <?php endif; ?>
-        <form method="post" action="<?= base_url('login/autenticar') ?>">
-            <input type="text" name="usuario" placeholder="Usuario" required>
-            <input type="password" name="password" placeholder="Contraseña" required>
-            <button type="submit">Ingresar</button>
-        </form>
+    <div class="left"></div>
+
+    <div class="right">
+        <div class="login-box">
+            <h1>Biblioteca Escolar</h1>
+            <?php if(session()->getFlashdata('error')): ?>
+                <p class="error"><?= session()->getFlashdata('error') ?></p>
+            <?php endif; ?>
+            <form method="post" action="<?= base_url('login/autenticar') ?>">
+                <label for="usuario">Usuario:</label>
+                <input type="text" name="usuario" id="usuario" required>
+
+                <label for="password">Contraseña:</label>
+                <input type="password" name="password" id="password" required>
+
+                <button type="submit">Ingresar</button>
+            </form>
+        </div>
     </div>
 </body>
 </html>
+

@@ -7,8 +7,8 @@
 
 <!-- Botón para salir al panel principal -->
 <div class="d-flex justify-content-end mb-3" style="width: 90%; margin: auto;">
-    <a class="btn btn-danger" href="<?=base_url('panel')?>">Regresar</a>
     <a class="btn btn-info" href="<?=base_url('prestamos/registro')?>">Registro</a>
+    <a class="btn btn-danger" href="<?=base_url('panel')?>">Regresar</a>
 </div>
 
 <!-- Tabla de libros disponibles para préstamo -->

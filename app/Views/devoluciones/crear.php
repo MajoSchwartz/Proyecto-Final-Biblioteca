@@ -13,36 +13,45 @@
             <input type="hidden" name="usuario_id" value="<?=$usuario['id']?>">
 
             <!-- Datos del libro (solo lectura) -->
+
+            <!-- Título de libro-->
             <div class="form-group mb-3">
                 <label for="titulo">Título:</label>
                 <input id="titulo" value="<?=$libro['titulo']?>" class="form-control" type="text" disabled>
             </div>
 
+            <!-- Nombre del autor-->
             <div class="form-group mb-3">
                 <label for="autor">Autor:</label>
                 <input id="autor" value="<?=$libro['autor']?>" class="form-control" type="text" disabled>
             </div>
 
+            <!-- Género -->
             <div class="form-group mb-3">
                 <label for="género">Género:</label>
                 <input id="género" value="<?=$libro['género']?>" class="form-control" type="text" disabled>
             </div>
 
+            <!-- Páginas -->
             <div class="form-group mb-3">
                 <label for="páginas">Páginas:</label>
                 <input id="páginas" value="<?=$libro['páginas']?>" class="form-control" type="number" disabled>
             </div>
 
+            <!-- ejemplar -->
             <div class="form-group mb-3">
                 <label for="Ejemplar">No. Ejemplar:</label>
                 <input id="Ejemplar" value="<?=$libro['Ejemplar']?>" class="form-control" type="number" disabled>
             </div>
 
+
+            <!-- Carnet de estudiante -->
             <div class="form-group mb-3">
                 <label for="Estudiante">Estudiante</label>
                 <input id="Estudiante" value="<?=$usuario['carnet'].' '.$usuario['nombre']?>" class="form-control" type="text" disabled>
             </div>
 
+            <!-- Fecha de préstamo -->
             <div class="form-group mb-3">
                 <label for="fecha_prestamo">Fecha de Préstamo</label>
                 <input id="fecha_prestamo" value="<?php echo $prestamo["fecha_prestamo"];?>" class="form-control" type="datetime-local" disabled>

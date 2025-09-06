@@ -32,11 +32,6 @@ $routes->get('editarl/(:num)', 'Libro::editar/$1');
 $routes->post('actualizarl', 'Libro::actualizar');
 $routes->get('borrarl/(:num)', 'Libro::borrar/$1');
 $routes->get('libros/buscar', 'Libro::buscar');
-$routes->get('libros/todos', 'Libro::todos');
-$routes->get('libros/disponible', 'Libro::disponibles');
-$routes->get('libros/prestado', 'Libro::prestados');
-$routes->get('libros/danado', 'Libro::danados');
-
 
 
 // Rutas para Prestamo (Crear y eliminar)
@@ -56,8 +51,7 @@ $routes->get('devoluciones/registro', 'Devolucion::registro');
 
 
 //Ruta para generar reportes
-$routes->get('reporte/libros', 'Reporte::libros'); //reporte de libros
 $routes->get('reporte/usuarios', 'Reporte::usuarios'); //reporte de usuarios
-$routes->get('reportes/prestamos-pdf', 'Reporte::prestamosPDF');
-$routes->get('reportes/libros-todos-pdf', 'Reporte::librosTodosPDF');
-$routes->get('reportes/libros/estado/(:segment)', 'Reporte::librosPorEstadoPDF/$1');
+$routes->get('reportes/prestamos-pdf', 'Reporte::prestamosPDF'); //Reporte de préstamos
+$routes->get('reportes/libros-todos-pdf', 'Reporte::librosTodosPDF'); // Reporte de libros 
+$routes->get('reportes/libros/estado/(:segment)', 'Reporte::librosPorEstadoPDF/$1'); //Reporte de libros según estado

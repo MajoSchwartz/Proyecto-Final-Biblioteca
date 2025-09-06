@@ -8,7 +8,7 @@
     <?php if ($rol === 'bibliotecario'): ?>
         <a href="<?=site_url('reportes/prestamos-pdf')?>" target="_blank" class="btn btn-primary">Exportar PDF</a>
     <?php endif; ?>
-    <a class="btn btn-danger" href="<?=base_url('prestamo')?>" >Salir</a>
+    <a class="btn btn-danger" href="<?=base_url('panel')?>" >Salir</a>
 </div>
 <br>
 <br>
