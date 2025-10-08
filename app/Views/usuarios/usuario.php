@@ -36,7 +36,9 @@
                 <th>Correo</th>
                 <th>Rol</th>
                 <th>Contraseña</th>
-                <th>Acciones</th>
+                <?php if (in_array($rol, ['admin'])): ?>
+                            <th>Acciones</th>
+                <?php endif; ?>
             </tr>
         </thead>
         <tbody>
@@ -50,10 +52,12 @@
                 <td><?=$usuario['correo'];?></td>
                 <td><?=$usuario['rol'];?></td>
                 <td><i class="fas fa-lock"></i> Protegida</td> <!--La contraseña se mantiene oculta -->
-                <td>
-                    <a href="<?=base_url('usuarios/editar/'.$usuario['id']);?>" class="btn btn-info" type="button"><i class="fas fa-pencil-alt"></i></a>
-                    <a href="<?=base_url('usuarios/borrar/'.$usuario['id']);?>" class="btn btn-danger" type="button"><i class="fas fa-trash-alt"></i></a>
-                </td>
+                <?php if ($rol === 'admin'): ?>
+                        <td>
+                            <a href="<?=base_url('usuarios/editar/'.$usuario['id']);?>" class="btn btn-info" type="button"><i class="fas fa-pencil-alt"></i></a>
+                            <a href="<?=base_url('usuarios/borrar/'.$usuario['id']);?>" class="btn btn-danger" type="button"><i class="fas fa-trash-alt"></i></a>
+                        </td>
+                <?php endif; ?>        
             </tr>
 
         <?php endforeach; ?>
