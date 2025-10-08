@@ -45,6 +45,7 @@
                 <input id="PASSWORD" value="<?=$usuario['usuario']?>" class="form-control" type="password" name="PASSWORD" required>
             </div>
             <button class="btn btn-success" type="submit">Actualizar</button>
+            <a href="<?=base_url('usuario');?>" class="btn btn-danger" >Cancelar</a>
         </form>
             </p>
         </div>
