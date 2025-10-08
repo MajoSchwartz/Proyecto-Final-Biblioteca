@@ -4,7 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Panel - Biblioteca Escolar</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">  </head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">  
+    <link rel="stylesheet" href="<?= base_url('panel.css') ?>">
+</head>
 </head>
 <body>
     <div class="container mt-4">
@@ -18,14 +20,15 @@
         <?php endif; ?>
 
         <!-- Enlaces a los módulos en una fila responsive -->
-        <div class="row mb-4">
-            <div class="col-md-3">
-                <a href="<?= base_url('libro') ?>" class="btn btn-info w-100">Gestionar Libros</a>
+        <div class="botones-panel">
+            <div class="fila">
+                <a href="<?= base_url('libro') ?>" class="btn btn-opcion">Gestionar Libros</a>
             </div>
             <div class="col-md-3">
-                <a href="<?= base_url('prestamos/registro') ?>" class="btn btn-info w-100">Gestionar Préstamos</a>
+                <a href="<?= base_url('prestamos/registro') ?>" class="btn btn-opcion">Gestionar Préstamos</a>
             </div>
         </div>
+        
 
         <!-- Botón de cerrar sesión -->
         <a href="<?= base_url('login/salir') ?>" class="btn btn-danger mt-3">Cerrar Sesión</a>

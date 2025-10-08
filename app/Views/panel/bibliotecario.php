@@ -10,7 +10,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Panel - Biblioteca Escolar</title>
     <!-- Incluye Bootstrap CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">  </head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous"> 
+    <link rel="stylesheet" href="<?= base_url('panel.css') ?>">
 </head>
 <body>
     <div class="container mt-4">
@@ -26,13 +27,13 @@
         <!-- Enlaces a los módulos en una fila responsive -->
         <div class="row mb-4">
             <div class="col-md-3">
-                <a href="<?= base_url('usuario') ?>" class="btn btn-info w-100">Ver Usuarios</a>
+                <a href="<?= base_url('usuario') ?>" class="btn btn-opcion">Ver Usuarios</a>
             </div>
             <div class="col-md-3">
-                <a href="<?= base_url('libro') ?>" class="btn btn-info w-100">Gestionar Libros</a>
+                <a href="<?= base_url('libro') ?>" class="btn btn-opcion">Gestionar Libros</a>
             </div>
             <div class="col-md-3">
-                <a href="<?= base_url('prestamo') ?>" class="btn btn-info w-100">Gestionar Préstamos</a>
+                <a href="<?= base_url('prestamo') ?>" class="btn btn-opcion">Gestionar Préstamos</a>
             </div>
             <div class="col-md-3">
                 <a href="<?= base_url('devolucion') ?>" class="btn btn-info w-100">Gestionar Devoluciones</a>

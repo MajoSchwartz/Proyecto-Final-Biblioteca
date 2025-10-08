@@ -1,0 +1,130 @@
+body {
+    background-color: #fdf6ec;
+    font-family: 'Georgia', serif;
+    color: #3c2c23;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+}
+
+.container {
+    max-width: 1000px;
+    padding: 20px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+h1 {
+    font-size: 3rem;
+    font-weight: bold;
+    color: #6e3b2d;
+    margin-top: 0;
+}
+
+p {
+    font-size: 1.5rem;
+    color: #5a3b2d;
+}
+
+.btn-opcion {
+    background-color: #8b5e3c;
+    color: #fff;
+    font-weight: bold;
+    border-radius: 10px;
+    text-decoration: none;
+    font-size: 1.2rem;
+    transition: background-color 0.3s ease;
+    height: 120px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 20px;
+}
+
+.btn-opcion:hover {
+    background-color: #6e3b2d;
+}
+
+.btn-danger {
+    background-color: #b85c4c;
+    color: #fff;
+    font-weight: bold;
+    border-radius: 24px;
+    font-size: 1.2rem;
+    transition: background-color 0.3s ease;
+    padding: 10px 30px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    max-width: 300px;
+    margin: 0 auto;
+}
+
+.btn-danger:hover {
+    background-color: #a94442;
+}
+
+/* Ajuste para la cuadrícula 2x2 */
+.row.justify-content-center {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.row.justify-content-center > .col-6 {
+    flex: 0 0 45%; /* Ajusta el ancho para dos botones por fila */
+    max-width: 45%;
+    margin: 0 2.5% 20px; /* Espaciado entre botones */
+}
+
+@media (max-width: 768px) {
+    .container {
+        max-width: 720px;
+    }
+    h1 {
+        font-size: 2.5rem;
+    }
+    p {
+        font-size: 1.2rem;
+    }
+    .btn-opcion {
+        height: 100px;
+        font-size: 1rem;
+        padding: 0 15px;
+    }
+    .row.justify-content-center > .col-6 {
+        flex: 0 0 45%;
+        max-width: 45%;
+    }
+    .btn-danger {
+        font-size: 1rem;
+        padding: 8px 20px;
+        max-width: 250px;
+    }
+}
+
+@media (max-width: 576px) {
+    .container {
+        max-width: 100%;
+        padding: 10px;
+    }
+    .row.justify-content-center > .col-6 {
+        flex: 0 0 100%;
+        max-width: 100%;
+        margin-bottom: 15px;
+    }
+    h1 {
+        font-size: 2rem;
+    }
+    .btn-opcion {
+        height: 80px;
+        padding: 0 10px;
+    }
+    .btn-danger {
+        width: 200px;
+    }
+}
