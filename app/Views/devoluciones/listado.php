@@ -4,7 +4,7 @@
 </div>
 <!-- Botón para regresar a la página principal -->
 <div class="d-flex justify-content-center">
-    <a <button class="btn btn-danger" href="<?=base_url('panel')?>">Regresar</a>
+    <a button class="btn btn-danger" href="<?=base_url('panel')?>">Regresar</a>
 </div>
 <br>
 <br>
