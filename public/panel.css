@@ -13,7 +13,8 @@ body {
     flex-grow: 1;
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
+    justify-content: center;
+    align-items: center;
 }
 
 h1 {
@@ -46,6 +47,7 @@ p {
 
 .btn-opcion:hover {
     background-color: #6e3b2d;
+    color: #C7923A;
 }
 
 .btn-danger {
@@ -107,6 +109,74 @@ p {
     }
 }
 
+/* Ajustes específicos para la vista de alumno */
+.alumno-view h1 {
+    margin-top: -50px; /* Título más arriba */
+}
+
+.alumno-view p {
+    padding-bottom: 40px;
+}
+
+.alumno-view .row.justify-content-center {
+    display: flex;
+    flex-direction: column; /* Mantiene los botones apilados verticalmente */
+    align-items: center; /* Centra los botones horizontalmente */
+}
+
+.alumno-view .row.justify-content-center > .col-6 {
+    flex: 0 0 100%; /* Aumenta el ancho a 70% para botones más anchos */
+    max-width: 100%;
+    margin-bottom: 20px; /* Espacio entre botones apilados */
+}
+
+.alumno-view .btn-opcion {
+    padding: 0 70px; /* Aumenta significativamente el padding horizontal para botones más anchos */
+}
+
+.alumno-view .btn-danger {
+    padding: 10px 80px; /* Aumenta el padding para "Cerrar Sesión" */
+    max-width: 600px; /* Aumenta el ancho máximo */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .container {
+        max-width: 720px;
+    }
+    h1 {
+        font-size: 2.5rem;
+    }
+    p {
+        font-size: 1.2rem;
+    }
+    .btn-opcion {
+        height: 100px;
+        font-size: 1rem;
+        padding: 0 15px;
+    }
+    .btn-danger {
+        font-size: 1rem;
+        padding: 8px 20px;
+        max-width: 250px;
+    }
+    .alumno-view h1 {
+        margin-top: -70px; /* Ajuste para tablets */
+    }
+    .alumno-view .row.justify-content-center > .col-6 {
+        flex: 0 0 100%;
+        max-width: 100%;
+        margin-bottom: 15px;
+    }
+    .alumno-view .btn-opcion {
+        padding: 0 50px; /* Ajuste de padding en tablets */
+    }
+    .alumno-view .btn-danger {
+        padding: 8px 50px;
+        max-width: 500px;
+    }
+}
+
 @media (max-width: 576px) {
     .container {
         max-width: 100%;
@@ -126,5 +196,18 @@ p {
     }
     .btn-danger {
         width: 200px;
+    }
+    .alumno-view h1 {
+        margin-top: -50px; /* Ajuste para móviles */
+    }
+    .alumno-view .row.justify-content-center > .col-6 {
+        flex: 0 0 90%;
+        max-width: 90%;
+    }
+    .alumno-view .btn-opcion {
+        padding: 0 40px; /* Ajuste de padding en móviles */
+    }
+    .alumno-view .btn-danger {
+        width: 400px;
     }
 }

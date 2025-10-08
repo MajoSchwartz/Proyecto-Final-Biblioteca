@@ -14,35 +14,37 @@
     <link rel="stylesheet" href="<?= base_url('panel.css') ?>">
 </head>
 <body>
-    <div class="container mt-4">
-        <h1 class="mb-4">Bienvenido, <?= session('usuario') ?></h1>
-        <?php if (session()->get('rol') === 'admin'): ?>
-            <p>Acceso completo al sistema.</p>
-        <?php elseif (session()->get('rol') === 'bibliotecario'): ?>
-            <p>Gestión de libros y préstamos.</p>
-        <?php else: ?>
-            <p>Explora los libros disponibles para lectura.</p>
-        <?php endif; ?>
+    <div class="d-flex flex-column min-vh-100">
+        <div class="container text-center flex-grow-1 d-flex flex-column justify-content-start pt-5">
+            <h1 class="mb-4">Bienvenido, <?= session('usuario') ?></h1>
+            <?php if (session()->get('rol') === 'admin'): ?>
+                <p class="mb-5">Acceso completo al sistema.</p>
+            <?php elseif (session()->get('rol') === 'bibliotecario'): ?>
+                <p class="mb-5">Gestión de libros y préstamos.</p>
+            <?php else: ?>
+                <p class="mb-5">Explora los libros disponibles para lectura.</p>
+            <?php endif; ?>
 
         <!-- Enlaces a los módulos en una fila responsive -->
-        <div class="row mb-4">
-            <div class="col-md-3">
-                <a href="<?= base_url('usuario') ?>" class="btn btn-opcion">Ver Usuarios</a>
+        <div class="row justify-content-center mb-5">
+            <div class="col-6 col-md-4 mb-4">
+                <a href="<?= base_url('usuario') ?>" class="btn btn-opcion w-100 py3">Ver Usuarios</a>
             </div>
-            <div class="col-md-3">
-                <a href="<?= base_url('libro') ?>" class="btn btn-opcion">Gestionar Libros</a>
+            <div class="col-6 col-md-4 mb-4">
+                <a href="<?= base_url('libro') ?>" class="btn btn-opcion w-100 py3">Gestionar Libros</a>
             </div>
-            <div class="col-md-3">
-                <a href="<?= base_url('prestamo') ?>" class="btn btn-opcion">Gestionar Préstamos</a>
+            <div class="col-6 col-md-4 mb-4">
+                <a href="<?= base_url('prestamo') ?>" class="btn btn-opcion w-100 py3">Gestionar Préstamos</a>
             </div>
-            <div class="col-md-3">
-                <a href="<?= base_url('devolucion') ?>" class="btn btn-info w-100">Gestionar Devoluciones</a>
+            <div class="col-6 col-md-4 mb-4">
+                <a href="<?= base_url('devolucion') ?>" class="btn btn-opcion w-100 py3">Gestionar Devoluciones</a>
             </div>
         </div>
 
         <!-- Botón de cerrar sesión -->
         <a href="<?= base_url('login/salir') ?>" class="btn btn-danger mt-3">Cerrar Sesión</a>
     </div>
+</div>    
 
-    </body>
+</body>
 </html>
