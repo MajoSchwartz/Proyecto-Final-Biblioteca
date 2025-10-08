@@ -2,6 +2,7 @@
 namespace App\Controllers;
 
 use CodeIgniter\Controller;
+use App\Models\PrestamoModel;
 use App\Models\UsuarioModel; //Para poder acceder y hacer uso de la base de datos
 
 class Usuario extends Controller{
@@ -50,14 +51,21 @@ class Usuario extends Controller{
         }
     }
 
-    public function borrar($id=null){ //En caso de no recepcionar nada
-        echo "Borrar registro".$id;
-        $usuario= new UsuarioModel();
-        $usuario->where('id',$id)->delete($id); //Borrar el id que coinicda con el que se solicita
+    public function borrar($id = null) //En caso de no recepcionar nada
+{
+    $prestamo = new PrestamoModel();
+    $tienePrestamos = $prestamo->where('usuario_id', $id)->countAllResults();
 
-        return $this->response->redirect(site_url('/usuario')); //Se regresa a la vista usuarios
-        
+    if ($tienePrestamos > 0) {
+        return redirect()->to('/usuario')->with('error', 'No se puede eliminar: el usuario tiene préstamos registrados.');
     }
+
+    $usuario = new UsuarioModel();
+    $usuario->delete($id);
+
+    return redirect()->to('/usuario')->with('success', 'Usuario eliminado correctamente.');
+}
+
 
     public function editar($id=null){
         $usuario= new UsuarioModel();

@@ -4,6 +4,18 @@
     <h2>LISTADO DE USUARIOS</h2>
 </div>
 <main>
+    <?php if (session()->getFlashdata('success')): ?>
+        <div class="alert alert-success text-center" style="width: 90%; margin: auto;">
+            <?= session()->getFlashdata('success') ?>
+        </div>
+    <?php endif; ?>
+
+    <?php if (session()->getFlashdata('error')): ?>
+        <div class="alert alert-danger text-center" style="width: 90%; margin: auto;">
+            <?= session()->getFlashdata('error') ?>
+        </div>
+    <?php endif; ?>
+
 <div class="d-flex justify-content-between mb-3" style="width: 90%; margin: auto;">
     <?php if ($rol === 'admin'): ?>
         <a class="btn btn-success" href="<?=base_url('usuarios/crear')?>">Crear un usuario</a>
