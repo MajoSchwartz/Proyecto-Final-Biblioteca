@@ -14,7 +14,7 @@
 <!-- Tabla de libros disponibles para préstamo -->
 <div class="table-responsive">
     <table class="table table-light table-hover" style="width: 90%; min-width: 800px; margin-left: auto; margin-right: auto;">
-        <thead class="table-dark text-center">
+        <thead class="encabezado-tabla">
             <tr>
                 <th>#</th>
                 <th style="max-width: 200px;">Título</th>

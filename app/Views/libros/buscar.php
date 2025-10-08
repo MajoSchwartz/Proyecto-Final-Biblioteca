@@ -15,7 +15,7 @@
     </div>
 <?php else: ?>
     <table class="table table-bordered table-hover" style="width: 90%; margin: auto;">
-        <thead class="thead-dark">
+        <thead class="encabezado-tabla">
             <tr>
                 <th>#</th>
                 <th>Título</th>

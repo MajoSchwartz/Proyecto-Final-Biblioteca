@@ -9,14 +9,14 @@
 <br>
 <br>
 <!-- Total de devoluciones -->
-<div class="alert alert-info text-center" style="width: 90%; min-width: 800px; margin-left: auto; margin-right: auto;">
+<div class="alert alert-secondary text-center" style="width: 90%; min-width: 800px; margin-left: auto; margin-right: auto;">
     Total de devoluciones registradas: <?= count($registros_devoluciones) ?>
 </div>
 
 <!-- Tabla que se mostrará en el registro -->
 <div class="table-responsive">
     <table class="table table-light table-hover" style="width: 90%; min-width: 800px; margin-left: auto; margin-right: auto;">
-        <thead class="table-dark text-center">
+        <thead class="encabezado-tabla">
             <tr>
                 <th>Devolución #</th>
                 <th>Código de Libro</th>

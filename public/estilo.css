@@ -1,125 +1,120 @@
+/* GENERAL*/
 body {
-    font-family: sans-serif;   
-    height: 100vh;
-    margin: 0px;
-    background-color: #703e36;
+    font-family: 'Bookman Old Style', serif; 
+    background-color: #fdf6ec; /* Fondo beige claro */
+    color: #3c2c23; /* Color café oscuro para el texto */
+    margin: 0;
+    padding: 0;
 }
 
-h1 { /* Se aplica directamente a la etiqueta h1, no a una clase */
-    font-size: 3rem;
-    font-weight: bold;
-    /*margin-bottom: 30px;*/
-    color: rgb(240, 240, 240);
-}
-
-.login {
-    background-color: white;
-    padding: 40px;
-    border-radius: 20px;
-    max-width: 400px;
-    width: 90%;
-    text-align: left;
-}
-
+/* ENCABEZADO */
 h2 {
-    font-size: 2rem;
-    font-weight: bold;
-    margin-bottom: 0.5rem;
-    color: rgb(240, 240, 240);
-    text-align: center;
+    font-size: 2.2rem; /* Tamaño grande para el título */
+    font-weight: bold; /* Texto en negrita */
+    color: #3c2c23; 
+    text-align: center; /*Texto centrado*/
+    margin-top: 40px; /* Espacio superior */
+    margin-bottom: 20px; /* Espacio inferior */
+
 }
 
-input {
-    width: 100%;
+/* CONTENEDOR PRINCIPAL */
+.container {
+    background-color: #fffaf3; /* Fondo más claro que el body */
+    padding: 20px; /* Espaciado interno */
+    border-radius: 12px; /* Bordes redondeados */
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05); /* Sombra suave*/
+}
+
+/* BUSCADOR PARA LIBROS */
+form.d-flex input[type="text"] {
+    background-color: #f5e9d7; /* Fondo beige para el input */
+    border: 1px solid #ccc; /* Borde gris claro */
+    border-radius: 8px; /* Bordes redondeados */
+    padding: 10px; /* Espaciado interno */
+    color: #3c2c23; /* Texto café oscuro */
+}
+
+form.d-flex .btn-outline-secondary {
+    background-color: #6e3b2d; /* Café para el botón */
+    color: #fff; /* Texto blanco */
+    border: none; /* Sin borde */
+    border-radius: 8px; /* Bordes redondeados */
+    padding: 10px 16px; /* Espaciado interno */
+    font-weight: bold; /* Texto en negrita */
+    transition: background-color 0.3s ease; /* Transición al pasar el mouse */
+}
+
+form.d-flex .btn-outline-secondary:hover {
+    background-color: #5a2f22; /* Color más oscuro al pasar el mouse */
+}
+
+/* MENÚ DESPLEGABLE PARA LIBROS */
+.dropdown-menu {
+    background-color: #fdf6ec; /* Fondo beige claro */
+    border: 1px solid #ccc; /* Borde gris claro */
+}
+
+/* TABLA */
+table.table {
+    background-color: #fff; /* Fondo blanco para la tabla */
+    border-collapse: collapse; /* Sin espacios entre celdas */
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05); /* Sombra suave */
+    margin-bottom: 40px; /* Espacio inferior */
+}
+
+thead.encabezado-tabla {
+    background-color: #6e3b2d; /* Fondo café para encabezado */
+    color: #fff; /* Texto blanco */
+}
+
+thead th {
+    text-align: center; /* Centra el texto */
+    padding: 12px; /* Espaciado interno */
+    font-weight: bold; /* Texto en negrita */
+}
+
+tbody tr:nth-child(even) {
+    background-color: #f5e9d7; /* Color para filas pares */
+}
+
+tbody tr:nth-child(odd) {
+    background-color: #fffaf3; /* Color para filas impares */
+}
+
+tbody td {
+    text-align: center; /* Centra el contenido */
     padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    box-sizing: border-box;
-    margin: 5px 0px 15px 0px;
+    vertical-align: middle; /* Centra verticalmente */
+    border-top: 1px solid #ddd; /* Línea divisoria entre filas */
 }
 
-button {
-    width: 100%;
-    padding: 15px;
-    border: none;
-    border-radius: 10px;
-    background-color: #C39999;
-    color: white;
-    font-size: 16px;
-    cursor: pointer;
-    font-weight: bold;
+td, th {
+    border-right: 1px solid #d8c2a8; /*Línea entre columnas */
 }
 
-button:hover {
-    background-color: #B38E8E;
+/*Para eliminar la lína en la última columna */
+td:last-child, th:last-child {
+    border-right: none;
 }
 
-.error {
-    color: red;
-    font-size: 14px;
-    text-align: center;
-    margin-bottom: 15px;
+/*NAVBAR*/
+.custom-navbar {
+    background-color: #6e3b2d; 
+    padding: 12px 24px; /* Espaciado interno */
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1); /* Sombra */
 }
 
-/* Grid Principal*/
-.gdc1 { grid-area: header; }
-.gdc2 { grid-area: main; }
-.gdc3 { grid-area: footer; }
-
-.grid-container {
-  display: grid;
-  max-height: calc(100vh - 1rem);
-  width: 100%;
-  height: 100%;
-  grid-template-areas:
-    'header'
-    'main'
-    'footer';
-  grid-template-rows: 4rem 1fr 2.2rem;
-  grid-template-columns: 1fr;
-  gap: 5px;
-  /*background-color: #2196F3;*/
+.navbar-brand {
+    font-family: 'Georgia', serif; 
+    font-size: 1.6rem;
+    font-weight: bold; 
+    color: #fff; /* Texto blanco */
+    text-decoration: none; /* Sin decoración */
+    letter-spacing: 1px; /* Espaciado entre letras */
+    transition: color 0.3s ease; /* Transición al pasar el mouse */
 }
 
-.grid-container > div {
-  /*background-color: rgba(255, 255, 255, 0.8);*/
-  text-align: center;
-}
-
-.grid-container .gdc1 {
-	background-color: #776660;
-    height: 100%;
-	width: 100%;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	line-height: 75px;
-	font-size: 2rem;
-}
-
-.grid-container .gdc2 {
-    background-color:#f6dad6;;
-	max-height: calc(1fr-105px);
-    font-size: 1rem;
-}
-
-.grid-container .gdc3 {
-	background-color: #ebd3ca;
-    font-size: 1rem;
-}
-
-.form-label {
-    display: flex;
-    align-items: start !important;
-    color: white;
-    font-weight: bold;
-}
-
-.form-check {
-    color: white;
-    font-weight: bold;
-} 
-
-.btn {
-    width: auto;
+.navbar-brand:hover {
+    color: #d4a373; /* Dorado al pasar el mouse */
 }

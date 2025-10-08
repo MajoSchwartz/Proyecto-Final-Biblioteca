@@ -91,7 +91,7 @@
 
     <div class="right">
         <div class="login-box">
-            <h1>Biblioteca Escolar</h1>
+            <h1><b>BIBLIOTECA ESCOLAR</b></h1>
             <?php if(session()->getFlashdata('error')): ?>
                 <p class="error"><?= session()->getFlashdata('error') ?></p>
             <?php endif; ?>

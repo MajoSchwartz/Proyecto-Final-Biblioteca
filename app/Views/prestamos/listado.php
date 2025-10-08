@@ -13,7 +13,7 @@
 <br>
 <br>
 <table class="table table-light table-hover" style="width: 90%; min-width: 800px; margin-left: auto; margin-right: auto;">
-    <thead class="thead-dark">
+    <thead class="encabezado-tabla">
         <tr>
             <th>#</th>
             <th>ID Libro</th>
