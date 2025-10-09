@@ -5,9 +5,9 @@
 </div>
 
 <!-- Botones para ir al registro de devoluciones o regresar al panel -->
-<div class="d-flex flex-column flex-md-row justify-content-end align-items-center mb-4" style="width: 90%; margin: auto; gap: 15px;">
-    <a class="btn btn-info mb-2 mb-md-0" href="<?= base_url('devoluciones/registro') ?>">Registro</a>
-    <a class="btn btn-danger mb-2 mb-md-0" href="<?= base_url('panel') ?>">Regresar</a>
+<div class="d-flex justify-content-between mb-3" style="width: 90%; margin: auto;">
+        <a class="btn btn-info" href="<?= base_url('devoluciones/registro') ?>" >Registro</a>
+    <a class="btn btn-danger" href="<?=base_url('panel')?>">Regresar</a>
 </div>
 
 

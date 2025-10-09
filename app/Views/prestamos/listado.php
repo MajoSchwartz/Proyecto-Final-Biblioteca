@@ -4,13 +4,13 @@
 <div class="d-flex justify-content-center">
     <h2>Registro de Préstamos</h2>
 </div>
-<div class="d-flex justify-content-end mb-3" style="width: 90%; margin: auto;">
-    <?php if ($rol === 'bibliotecario'): ?>
-        <a href="<?=site_url('reportes/prestamos-pdf')?>" target="_blank" class="btn btn-primary">Exportar PDF</a>
-    <?php endif; ?>
-    <a class="btn btn-danger" href="<?=base_url('panel')?>" >Salir</a>
+
+<div class="d-flex justify-content-between mb-3" style="width: 90%; margin: auto;">
+        <a class="btn btn-primary" href="<?= base_url('reportes/prestamos-pdf') ?>" target="_blank" class>Generar reporte</a>
+    <a class="btn btn-danger" href="<?=base_url('panel')?>">Regresar</a>
 </div>
-<br>
+
+
 <br>
 <table class="table table-light table-hover" style="width: 90%; min-width: 800px; margin-left: auto; margin-right: auto;">
     <thead class="encabezado-tabla">
