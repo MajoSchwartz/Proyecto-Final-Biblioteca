@@ -1,8 +1,11 @@
 <?=$cabecera?>
 
+<!-- Tarjeta para ingresar los datos -->
 <div class="card">
     <div class="card-body">
         <h5 class="card-title">Actualizar datos del libro</h5>
+
+        <!-- Muestra errores si hay problemas al actualizar -->
         <?php if (session()->getFlashdata('errors')): ?>
             <div class="alert alert-danger">
                 <?php foreach (session()->getFlashdata('errors') as $error): ?>
@@ -10,34 +13,48 @@
                 <?php endforeach; ?>
             </div>
         <?php endif; ?>
-        <form method="post" action="<?= site_url('/actualizarl') ?>">
+        <form method="post" action="<?= site_url('/actualizarl') ?>"> 
 
-        <input type="hidden" name="id" value="<?=$libro['id']?>">
+        <input type="hidden" name="id" value="<?=$libro['id']?>"> <!-- Para mostrar datos de la tabla de libros de ID -->
 
+        <!-- Campos del formulario -->
+            <!-- Título -->
             <div class="form-group">
                 <label for="titulo">Título:</label>
                 <input id="titulo" value="<?=$libro['titulo']?>" class="form-control" type="text" name="titulo" required>
             </div>
+
+            <!-- Autor -->
             <div class="form-group">
                 <label for="autor">Autor:</label>
                 <input id="autor" value="<?=$libro['autor']?>" class="form-control" type="text" name="autor" required>
             </div>
+
+            <!-- Género -->
             <div class="form-group">
                 <label for="género">Género:</label>
                 <input id="género" value="<?=$libro['género']?>" class="form-control" type="text" name="género"  required>
             </div>
+
+            <!-- Páginas -->
             <div class="form-group">
                 <label for="páginas">Páginas:</label>
                 <input id="páginas" value="<?=$libro['páginas']?>" class="form-control" type="number" name="páginas" >
             </div>
+
+            <!-- No. Ejemplar -->
             <div class="form-group">
                 <label for="Ejemplar">No. Ejemplar:</label>
                 <input id="Ejemplar" value="<?=$libro['Ejemplar']?>" class="form-control" type="number" name="Ejemplar">
             </div>
+
+            <!-- Cantidad -->
             <div class="form-group">
                 <label for="cantidad">Cantidad:</label>
                 <input id="cantidad" value="<?=$libro['Ejemplar']?>" class="form-control" type="number" name="cantidad">
             </div>
+
+            <!-- Nivel -->
             <div class="form-group">
                 <label for="nivel">Nivel:</label>
                 <select id="nivel" class="form-control" name="nivel">
@@ -45,6 +62,8 @@
                     <option value="Primaria Alta" <?= set_select('nivel', 'Primaria Alta', $libro['estado'] === 'Primaria Alta') ?>>Primaria Alta</option>
                 </select>
             </div>
+
+            <!-- Estado -->
             <div class="form-group">
                 <label for="estado">Estado:</label>
                 <select id="estado" class="form-control" name="estado">
@@ -53,6 +72,8 @@
                     <option value="dañado" <?= set_select('estado', 'dañado', $libro['estado'] === 'dañado') ?>>Dañado</option>
                 </select>
             </div>
+
+            <!-- Botones de acción -->
             <button class="btn btn-success" type="submit">Actualizar</button>
             <a href="<?=base_url('libro');?>" class="btn btn-info" >Cancelar</a>
         </form>

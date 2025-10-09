@@ -13,7 +13,7 @@
     Total de devoluciones registradas: <?= count($registros_devoluciones) ?>
 </div>
 
-<!-- Tabla que se mostrará en el registro -->
+<!-- Tabla que se va a mostrar en el registro -->
 <div class="table-responsive">
     <table class="table table-light table-hover" style="width: 90%; min-width: 800px; margin-left: auto; margin-right: auto;">
         <thead class="encabezado-tabla">

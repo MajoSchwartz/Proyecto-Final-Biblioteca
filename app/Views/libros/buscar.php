@@ -4,16 +4,19 @@
     <h2>Resultados de búsqueda</h2>
 </div>
 
+<!-- Muestra lo que el usuario buscó y un botón para volver al listado -->
 <div class="text-center mb-3">
     <p>Buscaste: <strong><?= esc($query) ?></strong></p>
     <a href="<?=base_url('libro')?>" class="btn btn-outline-dark">Volver al listado completo</a>
 </div>
 
+<!-- Si no se encontraron libros, se muestra un mensaje -->
 <?php if (empty($libros)): ?>
     <div class="alert alert-warning text-center" style="width: 90%; margin: auto;">
         No se encontraron libros que coincidan con tu búsqueda.
     </div>
 <?php else: ?>
+    <!-- Su hay resultados, se muestran en una tabla -->
     <table class="table table-bordered table-hover" style="width: 90%; margin: auto;">
         <thead class="encabezado-tabla">
             <tr>

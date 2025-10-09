@@ -14,25 +14,15 @@ class UsuarioModel extends Model{
                     ->first();
     }
 
-    public function create()
-    {
-        return [
-            'usuario' => '',
-            'PASSWORD' => '',
-            'nombre' => '',
-            'carne' => '',
-            'correo' => '',
-            'rol' => 'alumno',
-        ];
-    }
-
     public function saveWithDuplicateCheck(array $data)
 {
+    // Verifica si ya existe un usuario con el mismo carnet
     $existingUser = $this->where('carnet', $data['carnet'])->first();
 
     if ($existingUser) {
-        return false; // O actualizar si lo prefieres
-    } else {
+        // Si ya existe, no lo guarda
+        return false; 
+    } else { // Si no existe, lo guarda normalmente
         return $this->save($data);
     }
 }

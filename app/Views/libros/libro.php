@@ -25,6 +25,7 @@
 
             <?php if ($rol === 'bibliotecario'): ?>
                 <div class="dropdown mb-3 mb-lg-0 mr-lg-3">
+                    <!-- Menú desplegable para generar reportes en PDF -->
                     <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
                         Generar reporte
                     </button>
@@ -37,16 +38,14 @@
                 </div>
             <?php endif; ?>
 
-
+            <!-- Botón para regresar al panel -->
             <a class="btn btn-danger" href="<?= base_url('panel') ?>">Regresar</a>
         </div>
 
     </div>
 </div>
 
-
-
-
+            <!-- Tabla con los datos del libro -->
             <table class="table table-light table-hover" style="width: 90%; min-width: 800px; margin-left: auto; margin-right: auto;">
                 <thead class="encabezado-tabla">
                     <tr>
@@ -79,6 +78,7 @@
                         <td><?=$libro['nivel'];?></td>
                         <td><?=$libro['estado'];?></td>
 
+                        <!-- Acciones según el rol -->
                         <?php if ($rol === 'admin'): ?>
                         <td>
                             <a href="<?=base_url('editarl/'.$libro['id']);?>" class="btn btn-info" type="button"><i class="fas fa-pencil-alt"></i></a>

@@ -118,3 +118,85 @@ td:last-child, th:last-child {
 .navbar-brand:hover {
     color: #d4a373; /* Dorado al pasar el mouse */
 }
+
+/* Ajustes generales para pantallas medianas  */
+@media (max-width: 768px) {
+    h2 {
+        font-size: 1.8rem; 
+        margin-top: 30px;
+        margin-bottom: 15px;
+    }
+
+    .container {
+        padding: 15px;
+        border-radius: 8px;
+    }
+
+    form.d-flex {
+        flex-direction: column; 
+        gap: 10px;
+    }
+
+    form.d-flex input[type="text"] {
+        width: 100%;
+        font-size: 1rem;
+    }
+
+    form.d-flex .btn-outline-secondary {
+        width: 100%;
+        font-size: 1rem;
+    }
+
+    table.table {
+        font-size: 0.9rem; /* Reduce tamaño de texto en tabla */
+    }
+
+    thead th, tbody td {
+        padding: 8px;
+    }
+
+    .navbar-brand {
+        font-size: 1.4rem;
+    }
+}
+
+/* Ajustes para pantallas pequeñas */
+@media (max-width: 576px) {
+    h2 {
+        font-size: 1.5rem;
+        margin-top: 20px;
+        margin-bottom: 10px;
+    }
+
+    .container {
+        padding: 10px;
+        box-shadow: none; /* Elimina sombra para simplificar en celulares */
+    }
+
+    form.d-flex input[type="text"],
+    form.d-flex .btn-outline-secondary {
+        font-size: 0.9rem;
+        padding: 8px;
+    }
+
+    table.table {
+        font-size: 0.8rem;
+        overflow-x: auto; /* Permite desplazamiento horizontal si se llega a desbordar */
+        display: block;
+    }
+
+    thead th, tbody td {
+        padding: 6px;
+    }
+
+    .navbar-brand {
+        font-size: 1.2rem;
+        text-align: center;
+        display: block;
+    }
+
+    .custom-navbar {
+        padding: 10px;
+        text-align: center;
+    }
+}

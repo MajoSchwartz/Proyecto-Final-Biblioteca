@@ -4,11 +4,14 @@ namespace App\Controllers;
 use CodeIgniter\Controller;
 use App\Models\UsuarioModel;
 class Login extends Controller{
+
+    //Se muest5ra la vista de inicio de sesión
     public function index()
     {
         return view('login');
     }
 
+    //Verificación de que el usuario exista y se crea la sesión
     public function autenticar()
     {
         $usuario = $this->request->getPost('usuario');
@@ -17,7 +20,7 @@ class Login extends Controller{
         $usuarioModel = new UsuarioModel();
         $datosUsuario = $usuarioModel->verificarUsuario($usuario, $password);
 
-        if ($datosUsuario) {
+        if ($datosUsuario) { //Se guarda la sesión si las credenciales son correctas
             session()->set([
                 'id' => $datosUsuario['id'],
                 'usuario' => $datosUsuario['usuario'],
@@ -25,11 +28,12 @@ class Login extends Controller{
                 'logged_in' => true
             ]);
             return redirect()->to('/panel'); #Para el mensaje de bienvenida
-        } else {
+        } else { //Se muestra un mensaje de error si las credenciales no coinciden
             return redirect()->back()->with('error', 'Usuario o contraseña incorrectos'); #Se muestra mensaje en el inicio de sesión
         }
     }
 
+    //Se muestra el panel que corresponda según en rol del usuario
     public function panel()
     {
         if (!session()->get('logged_in')) {

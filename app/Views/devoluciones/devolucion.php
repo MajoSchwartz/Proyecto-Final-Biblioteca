@@ -4,7 +4,7 @@
     <h2 class="card-title">MÓDULO DE DEVOLUCIONES</h2>
 </div>
 
-<!-- Botones de navegacion: Regresar y listado -->
+<!-- Botones para ir al registro de devoluciones o regresar al panel -->
 <div class="d-flex flex-column flex-md-row justify-content-end align-items-center mb-4" style="width: 90%; margin: auto; gap: 15px;">
     <a class="btn btn-info mb-2 mb-md-0" href="<?= base_url('devoluciones/registro') ?>">Registro</a>
     <a class="btn btn-danger mb-2 mb-md-0" href="<?= base_url('panel') ?>">Regresar</a>
@@ -30,8 +30,10 @@
                     <th>Acciones</th>
                 </tr>
             </thead>
+
+            <!-- Datos de la tabla -->
             <tbody>
-                <?php foreach($libros as $libro): ?>
+                <?php foreach($libros as $libro): ?> <!-- Cada libro como uno solo -->
                 <tr>
                     <td><?=$libro['id'];?></td>
                     <td style="word-wrap: break-word; white-space: normal; max-width: 200px;"><?=$libro['titulo']?></td>

@@ -29,29 +29,16 @@ class LibroModel extends Model
         ],
     ];
 
-    // Método para preparar datos iniciales
-    public function create()
+    public function saveWithDuplicateCheck(array $data) 
     {
-        return [
-            'titulo' => '', // Cadena vacía, validada como requerida
-            'autor' => '',  // Cadena vacía, validada como requerida
-            'género' => '', // Cadena vacía, validada como requerida
-            'páginas' => NULL, // NULL para páginas, permitido como vacío
-            'Ejemplar' => 1,   // Valor predeterminado
-            'cantidad' => 1,   // Valor predeterminado
-            'nivel' => 'Primaria Baja', // Valor predeterminado
-            'estado' => 'disponible',   // Valor predeterminado
-        ];
-    }
-
-    public function saveWithDuplicateCheck(array $data)
-    {
+        //Verifica si ya existe un libro con el mismo título
         $existingBook = $this->where('titulo', $data['titulo'])->first();
 
+        //Si ya existe, se suma 1 a la cantidad
         if ($existingBook) {
             $existingBook['cantidad'] = (int)$existingBook['cantidad'] + 1;
             return $this->update($existingBook['id'], $existingBook);
-        } else {
+        } else { //Si no existe, se guarda como nuevo con cantidad 1
             $data['cantidad'] = 1;
             return $this->save($data);
         }

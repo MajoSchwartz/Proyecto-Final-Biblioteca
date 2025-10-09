@@ -6,6 +6,8 @@ use App\Models\PrestamoModel;
 use App\Models\UsuarioModel; //Para poder acceder y hacer uso de la base de datos
 
 class Usuario extends Controller{
+
+    //Se muestra el listado de usuario
     public function index ()
     {
         $usuario = new UsuarioModel(); //Variable del modelo
@@ -18,6 +20,7 @@ class Usuario extends Controller{
         return view('usuarios/usuario', $datos); //Al llamar esta función, va a la vista "usuarios"
     }
 
+    //Formulario para crear un nuevo usuario
     public function crear(){
 
         helper('form'); //para poder usar la lista de opciones
@@ -27,6 +30,7 @@ class Usuario extends Controller{
         return view ('usuarios/crear', $datos);
     }
 
+    //Guarda el usuario en la base de datos
     public function guardar(){
         $usuario = new UsuarioModel(); //crear una instancia al modelo para capturar la información y  meterla a la BD
         
@@ -37,7 +41,7 @@ class Usuario extends Controller{
             'carnet' => $this->request->getVar('carnet'), 
             'correo' => $this->request->getVar('correo'), 
             'rol' => $this->request->getVar('rol'),
-            'PASSWORD' => md5($this->request->getVar('PASSWORD'))
+            'PASSWORD' => md5($this->request->getVar('PASSWORD')) //Se cifra la contraseña con MD5
         ];
 
         log_message('debug', 'Datos recibidos en guardar: ' . print_r($datos, true));
@@ -51,6 +55,7 @@ class Usuario extends Controller{
         }
     }
 
+    //Elimina un usuario en caso de que no tenga préstamos registrados
     public function borrar($id = null) //En caso de no recepcionar nada
 {
     $prestamo = new PrestamoModel();
@@ -67,6 +72,7 @@ class Usuario extends Controller{
 }
 
 
+    //Formulario para editar los datos del usuario
     public function editar($id=null){
         $usuario= new UsuarioModel();
         $datos['usuario']=$usuario->where('id',$id)->first(); //Se busca los usuarios que tengan ese id y se utiliza el primero
@@ -81,6 +87,7 @@ class Usuario extends Controller{
 
     }
 
+    //Formulario para actualizar los datos del usuario
     public function actualizar(){
         $usuario= new UsuarioModel();
         $datos=[
@@ -89,7 +96,7 @@ class Usuario extends Controller{
             'carnet' => $this->request->getVar('carnet'), 
             'correo' => $this->request->getPost('correo'), 
             'rol' => $this->request->getVar('rol'),
-            'password' => MD5($this->request->getVar('PASSWORD'))
+            'password' => MD5($this->request->getVar('PASSWORD')) //Se vuelve a cifrar la contraseña
         ];
         $id= $this->request->getVar('id'); //Recepciona de la interfaz editar el id enviado
         $usuario->update($id,$datos); //Actualizar el usuario utilizando el id y sus datos

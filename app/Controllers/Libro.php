@@ -118,9 +118,10 @@ class Libro extends Controller{
     public function buscar()
     {
         $libro = new LibroModel();
-        $query = $this->request->getGet('q');
+        $query = $this->request->getGet('q'); //Se captura lo que el usuario ingresa
 
-        $datos['libros'] = $libro
+        //Se busca el libro por título o autor que coincida con el texto
+        $datos['libros'] = $libro 
             ->groupStart()
                 ->like('titulo', $query)
                 ->orLike('autor', $query)
@@ -130,7 +131,7 @@ class Libro extends Controller{
 
         $datos['cabecera'] = view('template/cabecera');
         $datos['pie'] = view('template/piepagina');
-        $datos['query'] = $query;
+        $datos['query'] = $query; //Se pasa la búsqueda a la vista
 
         return view('libros/buscar', $datos);
     }
